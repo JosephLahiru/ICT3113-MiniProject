@@ -40,3 +40,24 @@ ICT3113 – Advanced programming in Java Mini Project
   - Assume that
     - There is only one chat at a time
     - users can only present only in a single chat at any given time
+
+## Submission
+### Submit followings to the LMS by Sunday 11.00 p.m. 26th March 2023
+  - Zipped source code (both front and back end)
+  - An Executable version of your Chat application in windows or Linux environment
+  - Report (Email a copy to the course coordinator)
+    - Design cover page as shown in “Annex A”
+    - Class diagrams for your application
+    - ER diagram for your MySQL backend
+    - GUI designs for your applications
+    - Brief description about Tools, Technologies, and Concepts you have used to develop your application (Specially related to APIJ module)
+      - Where you have used it
+      - Why you have used it
+    - Any assumptions you made / Limitations of your application
+    - Individual contribution
+
+  ## Evaluation of the assessment
+  - Date: 28th March 2023 (12.00 p.m. to 04.00 p.m.)
+  - Each group must present their application
+    - 10 minutes presentation + 10 minutes discussion
+    - There will be an individual evaluation for each group member on their contribution
