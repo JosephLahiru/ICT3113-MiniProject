@@ -31,6 +31,10 @@ ICT3113 – Advanced programming in Java Mini Project
       - Chat must be saved in a “.txt” file in the local file system
       - You must maintain a record about the chat by keeping chat id and link to the ".txt" file in a database table
   
+  <p align="center">
+    <img width="263" alt="image" src="https://user-images.githubusercontent.com/44818405/216836763-f1983a2b-d1fe-40c4-9e14-8c494b4cf420.png">
+  </p>
+  
 ## Specific Requirements
   - You must design and implement a suitable GUI for the Chat application using Java Swing
   - You must use a design pattern to implement the subscribe/unsubscribe functionality of your Chat application
