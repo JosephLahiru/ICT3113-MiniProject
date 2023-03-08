@@ -27,7 +27,8 @@ public class Login extends JDialog{
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                tfEmail.setText("");
+                pwdField.setText("");
             }
         });
 
