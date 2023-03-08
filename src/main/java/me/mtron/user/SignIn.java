@@ -31,6 +31,7 @@ public class SignIn extends JDialog{
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         clearButton.addActionListener(new ActionListener() {
             @Override
@@ -70,7 +71,7 @@ public class SignIn extends JDialog{
     }
 
     public static void main(String[] args) {
-        System.out.println("yo");
+        System.out.println("SignIn");
         SignIn signIn = new SignIn(null);
     }
 }
