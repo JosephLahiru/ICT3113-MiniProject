@@ -19,13 +19,11 @@ public class User {
     public User() {
     }
 
-    public User(int user_id, String email, String userName, String password, String nickname, String profilePicture) {
-        this.user_id = user_id;
+    public User(String email, String userName, String password, String nickname) {
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.nickname = nickname;
-        this.profilePicture = profilePicture;
     }
 
     public int getUser_id() {

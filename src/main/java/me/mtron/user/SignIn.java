@@ -1,9 +1,13 @@
 package me.mtron.user;
 
+import org.hibernate.Session;
+import me.mtron.db.HibernateUtil;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class SignIn extends JDialog{
     private JTextField tfEmail;
@@ -49,6 +53,16 @@ public class SignIn extends JDialog{
                 nickName = tfNickName.getText();
                 password = String.valueOf(pwdField.getPassword());
                 passwordCom = String.valueOf(pwdComField.getPassword());
+
+                if(Objects.equals(password, passwordCom)) {
+                    User user = new User(email, uName, password, nickName);
+
+                    Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+                    session.beginTransaction();
+                    session.persist(user);
+                    session.getTransaction().commit();
+                    session.close();
+                }
             }
         });
 
