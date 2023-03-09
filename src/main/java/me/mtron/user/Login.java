@@ -64,12 +64,6 @@ public class Login extends JDialog{
 
             }
         });
-
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Login");
-        Login login = new Login(null);
+        //setVisible(true);
     }
 }
