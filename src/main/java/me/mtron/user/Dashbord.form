@@ -1,13 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="me.mtron.user.Dashbord">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="GridLayoutManager">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+      <xy x="20" y="20" width="772" height="453"/>
     </constraints>
-    <properties/>
+    <properties>
+      <alignmentX value="0.0"/>
+      <alignmentY value="0.5"/>
+    </properties>
     <border type="none"/>
-    <children/>
+    <children>
+      <grid id="7a7f4" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-6734405"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a6640" class="javax.swing.JLabel" binding="userProfilePic">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="816ac" class="javax.swing.JButton" binding="btnHome">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <actionCommand value="Button"/>
+              <autoscrolls value="false"/>
+              <background color="-6734405"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <font name="Book Antiqua" size="18"/>
+              <foreground color="-1"/>
+              <text value="Home"/>
+            </properties>
+          </component>
+          <component id="63661" class="javax.swing.JButton" binding="btnChat">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-8310365"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <font name="Book Antiqua" size="18"/>
+              <foreground color="-1"/>
+              <text value="Chat"/>
+            </properties>
+          </component>
+          <component id="c4bd0" class="javax.swing.JButton" binding="btnContact">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-6734405"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <font name="Book Antiqua" size="18"/>
+              <foreground color="-1"/>
+              <text value="Contact"/>
+            </properties>
+          </component>
+          <component id="70bca" class="javax.swing.JButton" binding="btnNoti">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-8310365"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <font name="Book Antiqua" size="18"/>
+              <foreground color="-1"/>
+              <text value="Notifications"/>
+            </properties>
+          </component>
+          <component id="5f569" class="javax.swing.JButton" binding="button5" default-binding="true">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-6734405"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <font name="Book Antiqua" size="18"/>
+              <foreground color="-1"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+          <vspacer id="352e5">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="dcd8b" class="javax.swing.JButton" binding="logoutButton" default-binding="true">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <font name="Book Antiqua" size="18"/>
+              <foreground color="-1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="4"/>
+              <icon value="images/logout.png"/>
+              <text value="  Logout"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="f4ade" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+    </children>
   </grid>
 </form>
