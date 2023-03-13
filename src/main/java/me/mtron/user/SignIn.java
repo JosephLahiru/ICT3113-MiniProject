@@ -63,6 +63,10 @@ public class SignIn extends JDialog{
                     session.persist(user);
                     session.getTransaction().commit();
                     session.close();
+
+                    Login login = new Login(null);
+                    login.setVisible(true);
+                    setVisible(false);
                 }
             }
         });
