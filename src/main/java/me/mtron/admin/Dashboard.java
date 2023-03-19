@@ -20,6 +20,7 @@ public class Dashboard extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
         createChatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,6 +28,31 @@ public class Dashboard extends JFrame {
                 new CreateChat();
             }
         });
+
+        subscribeUsersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dashboard.this.dispose();
+                new AddUsersChat();
+            }
+        });
+
+        unsubscribeUsersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dashboard.this.dispose();
+                new RemoveUsersChat();
+            }
+        });
+
+        removeUsersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dashboard.this.dispose();
+                new RemoveUsersApplication();
+            }
+        });
+
     }
 
     public static void main(String[] args) {
