@@ -4,59 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_Add_30px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_broom_30px_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_create_100px.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ICT3113-MiniProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/doe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/icons8_add_48px.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/icons8_create_48px.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/icons8_delete_male_user_48px.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/icons8_remove_48px.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/icons8_user_80px.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/icons8_user_shield_48px.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/logout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/images/signin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/admin/AddUsersChat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/admin/CreateChat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/admin/Dashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/admin/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/admin/RemoveUsersApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/admin/RemoveUsersChat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/db/HibernateUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/Dashbord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/Login$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/Login$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/SignIn$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/SignIn$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/SignIn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ICT3113-MiniProject/me/mtron/user/User.class" beforeDir="false" />
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="create-chat-gui">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_home_100px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,11 +60,30 @@
       <option name="presentableId" value="Default" />
       <updated>1679165350815</updated>
       <workItem from="1679165355701" duration="1398000" />
-      <workItem from="1679184367918" duration="4737000" />
+      <workItem from="1679184367918" duration="7833000" />
     </task>
+    <task id="LOCAL-00001" summary="create-chat-gui">
+      <created>1679189470861</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679189470861</updated>
+    </task>
+    <task id="LOCAL-00002" summary="create-chat-gui">
+      <created>1679189490407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679189490407</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create-chat-gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="create-chat-gui" />
   </component>
 </project>
