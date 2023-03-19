@@ -49,7 +49,7 @@
                   <alignmentY value="0.0"/>
                   <font name="JetBrains Mono" size="48" style="1"/>
                   <foreground color="-8464918"/>
-                  <icon value="images/icons8_create_100px.png"/>
+                  <icon value="images/icons8_Delete_Male_User_100px.png"/>
                   <text value="Unsubscribe Users From Chats"/>
                 </properties>
               </component>

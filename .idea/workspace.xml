@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="create-chat-gui-fix">
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="dashboard-sync">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_Add_Male_User_Group_100px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_Delete_Male_User_100px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_User_Menu_Female_100px.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +40,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/workspace/ICT3113-MiniProject/src/main/java/me/mtron/admin/AddUsersChat.form",
+    "last_opened_file_path": "D:/workspace/ICT3113-MiniProject/src/main/resources/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -55,8 +51,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\workspace\ICT3113-MiniProject\src\main\java\me\mtron\admin" />
       <recent name="D:\workspace\ICT3113-MiniProject\src\main\resources\images" />
+      <recent name="D:\workspace\ICT3113-MiniProject\src\main\java\me\mtron\admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -68,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679165350815</updated>
       <workItem from="1679165355701" duration="1398000" />
-      <workItem from="1679184367918" duration="11221000" />
+      <workItem from="1679184367918" duration="12713000" />
     </task>
     <task id="LOCAL-00001" summary="create-chat-gui">
       <created>1679189470861</created>
@@ -98,7 +94,42 @@
       <option name="project" value="LOCAL" />
       <updated>1679196972288</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add-users-ui">
+      <created>1679202578765</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679202578765</updated>
+    </task>
+    <task id="LOCAL-00006" summary="create-chat-update">
+      <created>1679202603959</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679202603959</updated>
+    </task>
+    <task id="LOCAL-00007" summary="remove-users-application-gui">
+      <created>1679202641239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679202641239</updated>
+    </task>
+    <task id="LOCAL-00008" summary="remove-users-chat-gui">
+      <created>1679202659941</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679202659941</updated>
+    </task>
+    <task id="LOCAL-00009" summary="dashboard-sync">
+      <created>1679202686868</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679202686868</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +138,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create-chat-gui" />
     <MESSAGE value="create-chat-gui-fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="create-chat-gui-fix" />
+    <MESSAGE value="add-users-ui" />
+    <MESSAGE value="create-chat-update" />
+    <MESSAGE value="remove-users-application-gui" />
+    <MESSAGE value="remove-users-chat-gui" />
+    <MESSAGE value="dashboard-sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="dashboard-sync" />
   </component>
 </project>
