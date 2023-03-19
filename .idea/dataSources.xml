@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="javachat@152.70.158.151" uuid="75285022-8e52-401d-9d96-30c0aa5a4000">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="b6148436-2d76-4f47-b902-233d40067419">
       <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://152.70.158.151/javachat</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="139c6adf-e90d-481a-b2b2-a2aded97be24">
-      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>Hibernate
 
-C:/wamp64/www/GitHub/ICT3113-MiniProject/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+D:/workspace/ICT3113-MiniProject/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://152.70.158.151/javachat</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
