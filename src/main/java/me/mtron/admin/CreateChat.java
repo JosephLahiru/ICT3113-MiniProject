@@ -11,7 +11,7 @@ public class CreateChat extends JFrame {
     private JButton addButton;
     private JButton resetButton;
     private JTextField textFieldChatDiscription;
-    private JButton button1;
+    private JButton cHomeButton;
 
     public CreateChat() {
         super("Create Chat");
@@ -21,7 +21,7 @@ public class CreateChat extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        button1.addActionListener(new ActionListener() {
+        cHomeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CreateChat.this.dispose();
