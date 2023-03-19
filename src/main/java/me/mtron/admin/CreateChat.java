@@ -24,6 +24,7 @@ public class CreateChat extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                CreateChat.this.dispose();
                 new Dashboard();
             }
         });
