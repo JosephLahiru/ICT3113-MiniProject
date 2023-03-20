@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="dashboard-sync">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_Add_Male_User_Group_100px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_Delete_Male_User_100px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_User_Menu_Female_100px.png" afterDir="false" />
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="ui-fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +40,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/workspace/ICT3113-MiniProject/src/main/resources/images",
+    "last_opened_file_path": "D:/workspace/ICT3113-MiniProject/src/main/java/me/mtron/admin/AddUsersChat.form",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "two.files.diff.last.used.file": "D:/workspace/ICT3113-MiniProject/src/main/java/me/mtron/admin/AddUsersChat.form",
     "vue.rearranger.settings.migration": "true"
   }
@@ -64,7 +65,11 @@
       <option name="presentableId" value="Default" />
       <updated>1679165350815</updated>
       <workItem from="1679165355701" duration="1398000" />
-      <workItem from="1679184367918" duration="12713000" />
+      <workItem from="1679184367918" duration="14058000" />
+      <workItem from="1679234505771" duration="1540000" />
+      <workItem from="1679312007156" duration="5526000" />
+      <workItem from="1679317574885" duration="5438000" />
+      <workItem from="1679330890609" duration="3625000" />
     </task>
     <task id="LOCAL-00001" summary="create-chat-gui">
       <created>1679189470861</created>
@@ -129,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679202686868</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ui-fix">
+      <created>1679204216961</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679204216961</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +155,7 @@
     <MESSAGE value="remove-users-application-gui" />
     <MESSAGE value="remove-users-chat-gui" />
     <MESSAGE value="dashboard-sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="dashboard-sync" />
+    <MESSAGE value="ui-fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui-fix" />
   </component>
 </project>

@@ -7,6 +7,14 @@ import java.awt.event.ActionListener;
 public class RemoveUsersApplication extends JFrame {
     private JButton uHomeButton;
     private JPanel removeUserPanel;
+    private JTextField rSUNTextField;
+    private JTextField rSUDETextField;
+    private JButton rSUSearchButton;
+    private JButton rSUResetButton;
+    private JTextField rRUETextField;
+    private JButton rRUResetButton;
+    private JButton rRUDeleteButton;
+    private JTable rUUserTable;
 
     public RemoveUsersApplication() {
         super("Remove Users from Application");
