@@ -18,6 +18,7 @@ public class Login extends JFrame{
     private JButton clearButton;
     private JButton loginButton;
     private JPanel loginPanel;
+    private JButton donTHaveAnButton;
     private String email;
     private String password;
 
@@ -66,6 +67,15 @@ public class Login extends JFrame{
 
             }
         });
+
+        donTHaveAnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login.this.dispose();
+                new SignIn(null);
+            }
+        });
+
         setVisible(true);
     }
 
