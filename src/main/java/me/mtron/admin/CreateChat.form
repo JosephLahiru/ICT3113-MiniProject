@@ -158,8 +158,10 @@
                     </constraints>
                     <properties>
                       <background color="-14418176"/>
+                      <focusable value="false"/>
                       <font name="Copperplate Gothic Bold" size="20" style="1"/>
                       <icon value="images/icons8_Add_30px.png"/>
+                      <requestFocusEnabled value="false"/>
                       <text value="Add"/>
                     </properties>
                   </component>
@@ -173,8 +175,10 @@
                     </constraints>
                     <properties>
                       <background color="-65525"/>
+                      <focusable value="false"/>
                       <font name="Copperplate Gothic Bold" size="20" style="1"/>
                       <icon value="images/icons8_broom_30px_2.png"/>
+                      <requestFocusEnabled value="false"/>
                       <text value="Reset"/>
                     </properties>
                   </component>
