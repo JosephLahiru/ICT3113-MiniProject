@@ -1,6 +1,5 @@
 package me.mtron.admin;
 
-import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,8 +24,8 @@ public class AddUsersChat extends JFrame {
         });
     }
     private JButton sHomeButton;
-    private JTable table2;
-    private JTable table1;
+    private JTable sChatTable;
+    private JTable sUserTable;
     private JTextField sSUNTextField;
     private JTextField sSUDETextField;
     private JButton sSUSearchButton;

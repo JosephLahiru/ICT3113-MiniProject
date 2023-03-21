@@ -120,7 +120,7 @@
                           <text value="User Table"/>
                         </properties>
                       </component>
-                      <component id="ae9b7" class="javax.swing.JTable" binding="table1" default-binding="true">
+                      <component id="ae9b7" class="javax.swing.JTable" binding="sUserTable">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>
@@ -150,7 +150,7 @@
                           <text value="Chat Table"/>
                         </properties>
                       </component>
-                      <component id="bc2d5" class="javax.swing.JTable" binding="table2" default-binding="true">
+                      <component id="bc2d5" class="javax.swing.JTable" binding="sChatTable">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>
