@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Objects;
 
-public class Login extends JDialog{
+public class Login extends JFrame{
 
     private JLabel imageLabel;
     private JTextField tfEmail;
@@ -22,14 +22,14 @@ public class Login extends JDialog{
     private String password;
 
     public Login(JFrame parent) {
-        super(parent);
-        setTitle("Login");
-        setContentPane(loginPanel);
-        setMinimumSize(new Dimension(700, 480));
-        setModal(true);
-        setLocationRelativeTo(parent);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
+        super("Login");
+
+        this.setContentPane(loginPanel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setMinimumSize(new Dimension(1280, 720));
+        this.setResizable(false);
+        this.pack();
+        this.setLocationRelativeTo(null);
 
         clearButton.addActionListener(new ActionListener() {
             @Override
@@ -54,6 +54,8 @@ public class Login extends JDialog{
                 for (User u: users) {
                     if(Objects.equals(u.getEmail(), email) && Objects.equals(u.getPassword(), password)){
                         System.out.println("Welcome " + u.getNickname());
+                        Login.this.dispose();
+                        new Dashboard(u.getEmail(), u.getNickname(), u.getProfilePicture());
                     }
 //                    System.out.println("Email: " + u.getEmail());
 //                    System.out.println("Password: " + u.getPassword());
@@ -64,6 +66,10 @@ public class Login extends JDialog{
 
             }
         });
-        //setVisible(true);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Login(null);
     }
 }
