@@ -20,7 +20,7 @@ public class ChatArea extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChatArea.this.dispose();
-                new Dashboard();
+                //new Dashboard();
             }
         });
     }
