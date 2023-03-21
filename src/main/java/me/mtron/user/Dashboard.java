@@ -43,7 +43,7 @@ public class Dashboard extends JFrame {
         chatAreaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ChatArea();
+                new ChatArea(userEmail, userNickName, userProPic);
                 Dashboard.this.dispose();
             }
         });
