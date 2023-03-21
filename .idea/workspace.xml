@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="Minor">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/Message.java" afterDir="false" />
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="Mior">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/mtron/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/mtron/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/ChatArea.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/ChatArea.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/ChatArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/ChatArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/Dashboard.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/Login.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/SignIn.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/SignIn.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/user/SignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/user/SignIn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,13 +69,13 @@
       <recent name="C:\wamp64\www\GitHub\ICT3113-MiniProject\src\main\resources\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Login (3)">
-    <configuration name="Dashboard (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="me.mtron.user.Dashboard" />
+  <component name="RunManager" selected="Application.Client (1)">
+    <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.mtron.Client" />
       <module name="ICT3113-MiniProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="me.mtron.user.*" />
+          <option name="PATTERN" value="me.mtron.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,12 +83,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Login (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="me.mtron.user.Login" />
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.mtron.Client" />
       <module name="ICT3113-MiniProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="me.mtron.user.*" />
+          <option name="PATTERN" value="me.mtron.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,12 +96,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Login (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="me.mtron.user.Login" />
+    <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.mtron.Server" />
       <module name="ICT3113-MiniProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="me.mtron.user.*" />
+          <option name="PATTERN" value="me.mtron.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,12 +109,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Login (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="me.mtron.user.Login" />
+    <configuration name="Server (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.mtron.Server" />
       <module name="ICT3113-MiniProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="me.mtron.user.*" />
+          <option name="PATTERN" value="me.mtron.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,12 +122,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="me.mtron.user.Login" />
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.mtron.Server" />
       <module name="ICT3113-MiniProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="me.mtron.user.*" />
+          <option name="PATTERN" value="me.mtron.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Login (3)" />
-        <item itemvalue="Application.Login" />
-        <item itemvalue="Application.Login (2)" />
-        <item itemvalue="Application.Login (1)" />
-        <item itemvalue="Application.Dashboard (1)" />
+        <item itemvalue="Application.Client (1)" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server (2)" />
+        <item itemvalue="Application.Server (1)" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +156,7 @@
       <workItem from="1679165355701" duration="1398000" />
       <workItem from="1679184367918" duration="12713000" />
       <workItem from="1679317770779" duration="4947000" />
-      <workItem from="1679399143619" duration="15274000" />
+      <workItem from="1679399143619" duration="22896000" />
     </task>
     <task id="LOCAL-00001" summary="create-chat-gui">
       <created>1679189470861</created>
@@ -290,7 +284,77 @@
       <option name="project" value="LOCAL" />
       <updated>1679405241911</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Improved UI in ChatArea">
+      <created>1679417815679</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417815679</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added Chat functionality to ChatArea">
+      <created>1679417847984</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417847984</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Improved UI in Dashboard">
+      <created>1679417867004</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417867004</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Improved UI in Login">
+      <created>1679417876674</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417876674</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Improved UI in SignIn">
+      <created>1679417891569</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417891569</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Passed User Data to ChatArea">
+      <created>1679417952918</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417952918</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added Don't have an Account Button">
+      <created>1679417988611</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1679417988611</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Added Message Class">
+      <created>1679418008913</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1679418008913</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Changed Default Size in SignIn to 720p and added Already Have an account Button">
+      <created>1679418068396</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1679418068396</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Mior">
+      <created>1679418079386</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1679418079386</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +376,16 @@
     <MESSAGE value="improved Dashboard" />
     <MESSAGE value="minor improvements in Login" />
     <MESSAGE value="Minor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor" />
+    <MESSAGE value="Improved UI in ChatArea" />
+    <MESSAGE value="Added Chat functionality to ChatArea" />
+    <MESSAGE value="Improved UI in Dashboard" />
+    <MESSAGE value="Improved UI in Login" />
+    <MESSAGE value="Improved UI in SignIn" />
+    <MESSAGE value="Passed User Data to ChatArea" />
+    <MESSAGE value="Added Don't have an Account Button" />
+    <MESSAGE value="Added Message Class" />
+    <MESSAGE value="Changed Default Size in SignIn to 720p and added Already Have an account Button" />
+    <MESSAGE value="Mior" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mior" />
   </component>
 </project>

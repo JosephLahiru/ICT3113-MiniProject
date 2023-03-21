@@ -68,6 +68,7 @@ public class ChatArea extends JFrame{
             setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             senderLabel = new JLabel();
             senderLabel.setFont(senderLabel.getFont().deriveFont(14f).deriveFont(Font.BOLD));
+            senderLabel.setForeground(Color.BLUE);
             messageLabel = new JLabel();
             messageLabel.setFont(messageLabel.getFont().deriveFont(16f));
             add(senderLabel, BorderLayout.NORTH);
