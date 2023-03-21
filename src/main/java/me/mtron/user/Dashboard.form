@@ -111,9 +111,11 @@
                   <background color="-1"/>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
+                  <focusable value="false"/>
                   <font name="Dialog" size="20" style="1"/>
                   <foreground color="-16777216"/>
                   <icon value="images/logout.png"/>
+                  <requestFocusEnabled value="false"/>
                   <text value="Logout"/>
                 </properties>
               </component>
