@@ -109,7 +109,9 @@
                     <children>
                       <component id="b80ad" class="javax.swing.JTable" binding="viewChatTable">
                         <constraints/>
-                        <properties/>
+                        <properties>
+                          <enabled value="false"/>
+                        </properties>
                       </component>
                     </children>
                   </scrollpane>
@@ -266,6 +268,7 @@
                     </constraints>
                     <properties>
                       <font name="Source Code Pro Semibold" size="20" style="1"/>
+                      <foreground color="-723969"/>
                       <text value="Chat Table"/>
                     </properties>
                   </component>

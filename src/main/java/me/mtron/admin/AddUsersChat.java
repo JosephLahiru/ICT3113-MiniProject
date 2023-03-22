@@ -27,7 +27,7 @@ public class AddUsersChat extends JFrame {
     private JTable sUserTable;
     private JLabel tableHeadingJLable;
 
-    public void SubscribeUserTable(){
+    private void SubscribeUserTable(){
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -47,7 +47,7 @@ public class AddUsersChat extends JFrame {
         sUserTable.setModel(model);
     }
 
-    public void SearchUserTable(String email){
+    private void SearchUserTable(String email){
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
         Query query = session.createQuery("from User where email = :email");
@@ -72,12 +72,13 @@ public class AddUsersChat extends JFrame {
             for (User userInfo : UserList) {
                 model.addRow(new Object[]{userInfo.getUser_id(), userInfo.getEmail(), userInfo.getUserName(), userInfo.getNickname()});
             }
+            sSUUserEmailtextField.setText(email);
         }
         tableHeadingJLable.setText("Users Table");
         sUserTable.setModel(model);
     }
 
-    public void SearchChatTable(String chatName){
+    private void SearchChatTable(String chatName){
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
         Query query = session.createQuery("from ChatInfo where chatName = :chatName");
@@ -101,7 +102,7 @@ public class AddUsersChat extends JFrame {
             for (ChatInfo chatInfo : chatInfoList) {
                 model.addRow(new Object[]{chatInfo.getChat_id(), chatInfo.getChatName(), chatInfo.getChatDescription()});
             }
-
+            sSUChatIDtextField.setText(String.valueOf(chatInfoList.get(0).getChat_id()));
         }
         tableHeadingJLable.setText("Chats Table");
         sUserTable.setModel(model);
@@ -199,12 +200,14 @@ public class AddUsersChat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sSUNTextField.setText("");
+                SubscribeUserTable();
             }
         });
         sSCResetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sSCNTextField.setText("");
+                SubscribeUserTable();
             }
         });
         resetButton.addActionListener(new ActionListener() {
@@ -212,11 +215,8 @@ public class AddUsersChat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 sSUChatIDtextField.setText("");
                 sSUUserEmailtextField.setText("");
+                SubscribeUserTable();
             }
         });
-    }
-
-    public static void main(String[] args) {
-        new AddUsersChat();
     }
 }

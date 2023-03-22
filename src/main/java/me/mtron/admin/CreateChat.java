@@ -72,15 +72,27 @@ public class CreateChat extends JFrame {
                     ChatInfo chatInfo = new ChatInfo(chatName, chatDiscription);
                     Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
                     session.beginTransaction();
-                    try {
+                    Query query = session.createQuery("from ChatInfo where chatName = :chatName and chatDescription = :chatDescription");
+                    query.setParameter("chatName", chatName);
+                    query.setParameter("chatDescription", chatDiscription);
+                    List<ChatInfo> chatInfoList = query.list();
+                    if(chatInfoList.size() > 0){
+                        JOptionPane.showMessageDialog(null, "Chat already exists");
+                    }else{
                         session.persist(chatInfo);
                         session.getTransaction().commit();
                         session.close();
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Chat already exists");
+                        JOptionPane.showMessageDialog(null, "Chat added successfully");
                     }
-                    JOptionPane.showMessageDialog(null, "Chat added successfully");
                 }
+                textFieldChatName.setText("");
+                textFieldChatDiscription.setText("");
+                LoadTable();
+            }
+        });
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 textFieldChatName.setText("");
                 textFieldChatDiscription.setText("");
                 LoadTable();
@@ -88,7 +100,4 @@ public class CreateChat extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        new CreateChat();
-    }
 }

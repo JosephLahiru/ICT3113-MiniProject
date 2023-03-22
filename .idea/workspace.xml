@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="chat-backend">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/SubscribeuserEntity.java" afterDir="false" />
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="subscribe-backend-finalized">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b6148436-2d76-4f47-b902-233d40067419.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b6148436-2d76-4f47-b902-233d40067419.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/CreateChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
@@ -91,7 +94,7 @@
       <workItem from="1679395846884" duration="2675000" />
       <workItem from="1679398563052" duration="11183000" />
       <workItem from="1679427384727" duration="2358000" />
-      <workItem from="1679457807171" duration="12985000" />
+      <workItem from="1679457807171" duration="18133000" />
     </task>
     <task id="LOCAL-00001" summary="create-chat-gui">
       <created>1679189470861</created>
@@ -212,7 +215,35 @@
       <option name="project" value="LOCAL" />
       <updated>1679463231505</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="subscribe-backend">
+      <created>1679471179774</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1679471179774</updated>
+    </task>
+    <task id="LOCAL-00019" summary="subscribe-backend">
+      <created>1679471659706</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1679471659706</updated>
+    </task>
+    <task id="LOCAL-00020" summary="subscribe-backend-finalized">
+      <created>1679473229697</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1679473229697</updated>
+    </task>
+    <task id="LOCAL-00021" summary="subscribe-backend-finalized">
+      <created>1679473261111</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1679473261111</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +262,8 @@
     <MESSAGE value="remove-user-app-gui" />
     <MESSAGE value="fix" />
     <MESSAGE value="chat-backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="chat-backend" />
+    <MESSAGE value="subscribe-backend" />
+    <MESSAGE value="subscribe-backend-finalized" />
+    <option name="LAST_COMMIT_MESSAGE" value="subscribe-backend-finalized" />
   </component>
 </project>
