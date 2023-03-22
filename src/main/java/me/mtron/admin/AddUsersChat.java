@@ -31,7 +31,7 @@ public class AddUsersChat extends JFrame {
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("select s.chatId, c.chatName, s.userId, u.userName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id");
+        Query query = session.createQuery("select s.chatId, c.chatName, s.userId, u.userName, u.email from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id");
         List<Object[]> rows = query.list();
         session.close();
 
@@ -40,6 +40,7 @@ public class AddUsersChat extends JFrame {
         model.addColumn("Chat Name");
         model.addColumn("User ID");
         model.addColumn("User Name");
+        model.addColumn("User Email");
         for (Object[] row : rows) {
             model.addRow(row);
         }

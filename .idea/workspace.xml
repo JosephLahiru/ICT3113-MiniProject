@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="finalize-user-remove">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b6148436-2d76-4f47-b902-233d40067419.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b6148436-2d76-4f47-b902-233d40067419.xml" afterDir="false" />
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="finalize-remaining">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +85,7 @@
       <workItem from="1679398563052" duration="11183000" />
       <workItem from="1679427384727" duration="2358000" />
       <workItem from="1679457807171" duration="18731000" />
-      <workItem from="1679485351043" duration="2686000" />
+      <workItem from="1679485351043" duration="2823000" />
     </task>
     <task id="LOCAL-00001" summary="create-chat-gui">
       <created>1679189470861</created>
@@ -253,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679486361583</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="finalize-remaining">
+      <created>1679488084684</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1679488084685</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +278,7 @@
     <MESSAGE value="subscribe-backend-finalized" />
     <MESSAGE value="update-subscribe-create" />
     <MESSAGE value="finalize-user-remove" />
-    <option name="LAST_COMMIT_MESSAGE" value="finalize-user-remove" />
+    <MESSAGE value="finalize-remaining" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalize-remaining" />
   </component>
 </project>
