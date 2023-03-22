@@ -148,19 +148,41 @@ public class AddUsersChat extends JFrame {
                 int chatID = Integer.parseInt(sSUChatIDtextField.getText());
                 String userEmail = sSUUserEmailtextField.getText();
                 Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
-                if(sSUChatIDtextField.getText().isEmpty() || sSUUserEmailtextField.getText().isEmpty()){
+                session.beginTransaction();
+                //check user exists
+                Query query = session.createQuery("from User where email = :email");
+                query.setParameter("email", userEmail);
+                List<User> UserList = query.list();
+                int userID = UserList.get(0).getUser_id();
+                //check chat exists
+                Query query1 = session.createQuery("from ChatInfo where chat_id = :chat_id");
+                query1.setParameter("chat_id", chatID);
+                List<ChatInfo> ChatInfoList = query1.list();
+                //check user already subscribed to chat
+                Query query2 = session.createQuery("from SubscribeuserEntity where userId = :userId");
+                query2.setParameter("userId", userID);
+                List<SubscribeuserEntity> SubscribeuserEntityList = query2.list();
+
+                if(sSUChatIDtextField.getText().isEmpty() || sSUUserEmailtextField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
+                }else if(UserList.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "User not found");
+                }else if(ChatInfoList.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Chat not found");
+                }else if(!SubscribeuserEntityList.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "User already subscribed to chat");
                 }else{
-                    session.beginTransaction();
                     SubscribeuserEntity subscribeuserEntity = new SubscribeuserEntity();
                     subscribeuserEntity.setChatId(Integer.parseInt(sSUChatIDtextField.getText()));
                     subscribeuserEntity.setUserId(Integer.parseInt(sSUUserEmailtextField.getText()));
                     session.save(subscribeuserEntity);
                     session.getTransaction().commit();
-                    session.close();
                     SubscribeUserTable();
+                    sSUChatIDtextField.setText("");
+                    sSUUserEmailtextField.setText("");
                     JOptionPane.showMessageDialog(null, "User subscribed to chat");
                 }
+                session.close();
             }
         });
         sSUResetButton.addActionListener(new ActionListener() {
