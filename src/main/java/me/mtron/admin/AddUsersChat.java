@@ -147,21 +147,31 @@ public class AddUsersChat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int chatID = Integer.parseInt(sSUChatIDtextField.getText());
                 String userEmail = sSUUserEmailtextField.getText();
+                boolean userExists = false;
+
                 Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
                 session.beginTransaction();
+
                 //check user exists
                 Query query = session.createQuery("from User where email = :email");
                 query.setParameter("email", userEmail);
                 List<User> UserList = query.list();
-                int userID = UserList.get(0).getUser_id();
+
+                if(UserList.isEmpty()) {
+                    userExists = false;
+                }else {
+                    userExists = true;
+                    int userID = UserList.get(0).getUser_id();
+                    //check user already subscribed to chat
+                    Query query2 = session.createQuery("from SubscribeuserEntity where userId = :userId");
+                    query2.setParameter("userId", userID);
+                    List<SubscribeuserEntity> SubscribeuserEntityList = query2.list();
+                }
                 //check chat exists
                 Query query1 = session.createQuery("from ChatInfo where chat_id = :chat_id");
                 query1.setParameter("chat_id", chatID);
                 List<ChatInfo> ChatInfoList = query1.list();
-                //check user already subscribed to chat
-                Query query2 = session.createQuery("from SubscribeuserEntity where userId = :userId");
-                query2.setParameter("userId", userID);
-                List<SubscribeuserEntity> SubscribeuserEntityList = query2.list();
+
 
                 if(sSUChatIDtextField.getText().isEmpty() || sSUUserEmailtextField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
@@ -169,7 +179,7 @@ public class AddUsersChat extends JFrame {
                     JOptionPane.showMessageDialog(null, "User not found");
                 }else if(ChatInfoList.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Chat not found");
-                }else if(!SubscribeuserEntityList.isEmpty()){
+                }else if(userExists){
                     JOptionPane.showMessageDialog(null, "User already subscribed to chat");
                 }else{
                     SubscribeuserEntity subscribeuserEntity = new SubscribeuserEntity();
