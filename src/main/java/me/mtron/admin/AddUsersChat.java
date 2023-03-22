@@ -129,7 +129,11 @@ public class AddUsersChat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String email = sSUNTextField.getText();
-                SearchUserTable(email);
+                if(sSUNTextField.getText().isEmpty())
+                    JOptionPane.showMessageDialog(null, "Please fill the field");
+                else {
+                    SearchUserTable(email);
+                }
             }
         });
         sSCSearchButton.addActionListener(new ActionListener() {

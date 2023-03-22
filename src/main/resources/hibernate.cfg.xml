@@ -22,6 +22,7 @@
 
         <mapping class="me.mtron.user.User"/>
         <mapping class="me.mtron.admin.ChatInfo"/>
+        <mapping class="me.mtron.admin.SubscribeuserEntity"/>
 
     </session-factory>
 </hibernate-configuration>
