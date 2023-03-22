@@ -2,19 +2,40 @@ package me.mtron.admin;
 
 import me.mtron.db.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class CreateChat extends JFrame {
     private JPanel createChatPanel;
-    private JTable viewChatTable;
     private JTextField textFieldChatName;
     private JButton addButton;
     private JButton resetButton;
     private JTextField textFieldChatDiscription;
     private JButton cHomeButton;
+    private JTable viewChatTable;
+
+    private void LoadTable(){
+
+        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from ChatInfo");
+        List<ChatInfo> chatInfoList = query.list();
+        session.close();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Chat ID");
+        model.addColumn("Chat Name");
+        model.addColumn("Chat Description");
+        for (ChatInfo chatInfo : chatInfoList) {
+            model.addRow(new Object[]{chatInfo.getChat_id(), chatInfo.getChatName(), chatInfo.getChatDescription()});
+        }
+        viewChatTable.setModel(model);
+    }
 
     public CreateChat() {
         super("Create Chat");
@@ -24,6 +45,8 @@ public class CreateChat extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        LoadTable();
         cHomeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,15 +70,20 @@ public class CreateChat extends JFrame {
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
                 } else {
                     ChatInfo chatInfo = new ChatInfo(chatName, chatDiscription);
-                    JOptionPane.showMessageDialog(null, "Chat Created Successfully");
                     Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
                     session.beginTransaction();
-                    session.persist(chatInfo);
-                    session.getTransaction().commit();
-                    session.close();
+                    try {
+                        session.persist(chatInfo);
+                        session.getTransaction().commit();
+                        session.close();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Chat already exists");
+                    }
+                    JOptionPane.showMessageDialog(null, "Chat added successfully");
                 }
                 textFieldChatName.setText("");
                 textFieldChatDiscription.setText("");
+                LoadTable();
             }
         });
     }

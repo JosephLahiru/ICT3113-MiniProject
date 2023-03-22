@@ -5,13 +5,12 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "chatinfo")
 public class ChatInfo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int chat_id;
     @Column(name = "chat_name")
     private String chatName;
-    @Column(name = "chat_description")
+    @Column(name = "chat_discription")
     private String chatDescription;
 
     public ChatInfo() {
@@ -20,6 +19,10 @@ public class ChatInfo {
     public ChatInfo(String chatName, String chatDescription) {
         this.chatName = chatName;
         this.chatDescription = chatDescription;
+    }
+
+    public int getChat_id() {
+        return chat_id;
     }
 
     public String getChatName() {
