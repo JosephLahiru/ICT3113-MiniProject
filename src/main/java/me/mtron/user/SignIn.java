@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class SignIn extends JDialog{
+public class SignIn extends JFrame{
     private JTextField tfEmail;
     private JTextField tfUserName;
     private JTextField tfNickName;
@@ -20,18 +20,19 @@ public class SignIn extends JDialog{
     private JPasswordField pwdField;
     private JPasswordField pwdComField;
     private JLabel imageLabel;
+    private JButton alreadyHaveAnAccountButton;
     private String email, uName, nickName, proPic;
     private String password, passwordCom;
 
     public SignIn(JFrame parent) {
-        super(parent);
-        setTitle("SignIn");
-        setContentPane(signInPanel);
-        setMinimumSize(new Dimension(700, 480));
-        setModal(true);
-        setLocationRelativeTo(parent);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
+        super("SignIn");
+
+        this.setContentPane(signInPanel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setMinimumSize(new Dimension(1280, 720));
+        this.setResizable(false);
+        this.pack();
+        this.setLocationRelativeTo(null);
 
         clearButton.addActionListener(new ActionListener() {
             @Override
@@ -71,11 +72,19 @@ public class SignIn extends JDialog{
             }
         });
 
+        alreadyHaveAnAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignIn.this.dispose();
+                new Login(null);
+            }
+        });
+
         setVisible(true);
     }
 
     public static void main(String[] args) {
         System.out.println("SignIn");
-        SignIn signIn = new SignIn(null);
+        new SignIn(null);
     }
 }
