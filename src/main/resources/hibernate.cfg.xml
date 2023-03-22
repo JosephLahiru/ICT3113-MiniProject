@@ -8,7 +8,7 @@
             org.hibernate.dialect.MySQLDialect
         </property>
 
-        <property name = "hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name = "hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
         <property name = "hibernate.connection.url">
             jdbc:mysql://152.70.158.151/javachat
@@ -21,6 +21,9 @@
         <property name="show_sql">true</property>
 
         <mapping class="me.mtron.user.User"/>
+        <mapping class="me.mtron.admin.ChatInfo"/>
+        <mapping class="me.mtron.admin.SubscribeuserEntity"/>
+        <mapping class="me.mtron.admin.Adminusers"/>
 
     </session-factory>
 </hibernate-configuration>
