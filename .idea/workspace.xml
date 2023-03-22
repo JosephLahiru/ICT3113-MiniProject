@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="finalize-remaining">
+    <list default="true" id="de252015-dc09-404f-8e37-cd301b3b564f" name="Changes" comment="finalize-remaining-update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Adminusers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/adminlogin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_administrative_tools_100px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b6148436-2d76-4f47-b902-233d40067419.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b6148436-2d76-4f47-b902-233d40067419.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/AddUsersChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/RemoveUsersChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Login.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/mtron/admin/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,28 +45,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;b6148436-2d76-4f47-b902-233d40067419&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/workspace/ICT3113-MiniProject/src/main/java/me/mtron/admin/RemoveUsersApplication.form&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.postfix.templates&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;D:/workspace/ICT3113-MiniProject/src/main/java/me/mtron/admin/RemoveUsersApplication.form&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JPA.DatabaseSchemaImportDialog": "b6148436-2d76-4f47-b902-233d40067419",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/workspace/ICT3113-MiniProject/src/main/resources/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.postfix.templates",
+    "two.files.diff.last.used.file": "D:/workspace/ICT3113-MiniProject/src/main/java/me/mtron/admin/CreateChat.form",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\workspace\ICT3113-MiniProject\src\main\resources\images" />
       <recent name="D:\workspace\ICT3113-MiniProject\src\main\java\me\mtron\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\ICT3113-MiniProject\src\main\resources\images" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="me.mtron.admin" />
@@ -85,7 +94,7 @@
       <workItem from="1679398563052" duration="11183000" />
       <workItem from="1679427384727" duration="2358000" />
       <workItem from="1679457807171" duration="18731000" />
-      <workItem from="1679485351043" duration="2823000" />
+      <workItem from="1679485351043" duration="7774000" />
     </task>
     <task id="LOCAL-00001" summary="create-chat-gui">
       <created>1679189470861</created>
@@ -255,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679488084685</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="finalize-remaining-update">
+      <created>1679488209300</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1679488209300</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +295,7 @@
     <MESSAGE value="update-subscribe-create" />
     <MESSAGE value="finalize-user-remove" />
     <MESSAGE value="finalize-remaining" />
-    <option name="LAST_COMMIT_MESSAGE" value="finalize-remaining" />
+    <MESSAGE value="finalize-remaining-update" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalize-remaining-update" />
   </component>
 </project>
