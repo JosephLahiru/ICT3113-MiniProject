@@ -1,9 +1,15 @@
 package me.mtron.user;
 
+import me.mtron.db.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ChatArea extends JFrame{
     private JButton cHomeButton;
@@ -11,12 +17,33 @@ public class ChatArea extends JFrame{
     private JButton sendButton;
     private JTextField msgTextField;
     private JScrollPane scrollPane;
+    private JTable myChattable;
+    private JButton leaveChatButton;
+    private JButton joinChatButton;
+    private JLabel chatLable;
     private String userEmail;
     private String userNickName;
     private String userProPic;
 
     private JList<Message> chatList;
     private DefaultListModel<Message> chatListModel;
+
+    private void SubscribeUserTable(){
+        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("select c.chatName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id and u.email = :email");
+        query.setParameter("email", userEmail);
+        List<String> chatNames = query.getResultList();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Chat Name");
+        for (String chatName : chatNames) {
+            Object[] row = {chatName};
+            model.addRow(row);
+        }
+        myChattable.setModel(model);
+    }
 
     public ChatArea(String email, String nickname, String user_image) {
         super("ChatArea");
@@ -31,6 +58,8 @@ public class ChatArea extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        SubscribeUserTable();
 
         chatListModel = new DefaultListModel<>();
         chatList = new JList<>(chatListModel);
@@ -98,6 +127,10 @@ public class ChatArea extends JFrame{
 
             return this;
         }
+    }
+
+    public static void main(String[] args) {
+        new ChatArea("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");
     }
 
 }
