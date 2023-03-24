@@ -368,24 +368,17 @@
     <MESSAGE value="remove-users-application-gui" />
     <MESSAGE value="remove-users-chat-gui" />
     <MESSAGE value="dashboard-sync" />
-    <MESSAGE value="Created User Chat Area" />
-    <MESSAGE value="Created User Dashboard" />
-    <MESSAGE value="Worked on Login UI" />
-    <MESSAGE value="Worked on Dashboard UI" />
-    <MESSAGE value="Added changes on ChatArea" />
-    <MESSAGE value="improved Dashboard" />
-    <MESSAGE value="minor improvements in Login" />
-    <MESSAGE value="Minor" />
-    <MESSAGE value="Improved UI in ChatArea" />
-    <MESSAGE value="Added Chat functionality to ChatArea" />
-    <MESSAGE value="Improved UI in Dashboard" />
-    <MESSAGE value="Improved UI in Login" />
-    <MESSAGE value="Improved UI in SignIn" />
-    <MESSAGE value="Passed User Data to ChatArea" />
-    <MESSAGE value="Added Don't have an Account Button" />
-    <MESSAGE value="Added Message Class" />
-    <MESSAGE value="Changed Default Size in SignIn to 720p and added Already Have an account Button" />
-    <MESSAGE value="Mior" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mior" />
+    <MESSAGE value="ui-fix" />
+    <MESSAGE value="add-user-gui" />
+    <MESSAGE value="remove-user-app-gui" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="chat-backend" />
+    <MESSAGE value="subscribe-backend" />
+    <MESSAGE value="subscribe-backend-finalized" />
+    <MESSAGE value="update-subscribe-create" />
+    <MESSAGE value="finalize-user-remove" />
+    <MESSAGE value="finalize-remaining" />
+    <MESSAGE value="finalize-remaining-update" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalize-remaining-update" />
   </component>
 </project>

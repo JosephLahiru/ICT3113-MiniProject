@@ -5,5 +5,13 @@
              version="3.0">
     <persistence-unit name="default">
 
+        <class>me.mtron.admin.SubscribeuserEntity</class>
+        <class>me.mtron.admin.Adminusers</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://152.70.158.151/javachat"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="amres"/>
+        </properties>
     </persistence-unit>
 </persistence>
