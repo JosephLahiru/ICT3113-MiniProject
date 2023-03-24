@@ -85,6 +85,17 @@ public class ChatArea extends JFrame{
                 new Dashboard(userEmail, userNickName, userProPic);
             }
         });
+        joinChatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(myChattable.getSelectedRow() != -1){
+                    String chatName = myChattable.getValueAt(myChattable.getSelectedRow(), 0).toString();
+                    chatLable.setText(chatName);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Please select a chat to join");
+                }
+            }
+        });
     }
 
     // A custom cell renderer for the chat messages
