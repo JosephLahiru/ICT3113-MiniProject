@@ -60,7 +60,7 @@ public class ChatClient extends UnicastRemoteObject implements ChatClientITF {
     }
 
     public void messageFromServer(String message) throws RemoteException {
-        Message msg = new Message("Server", message);
+        Message msg = new Message(message.split(":")[0], message.split(":")[1]);
         this.chatGUI.chatListModel.addElement(msg);
         this.chatGUI.msgTextField.setText("");
         this.chatGUI.chatList.ensureIndexIsVisible(this.chatGUI.chatListModel.getSize()-1);

@@ -26,7 +26,7 @@ public class ChatArea extends JFrame{
     private JButton joinChatButton;
     private JLabel chatLable;
     private String userEmail;
-    private String userNickName;
+    public String userNickName;
     private String userProPic;
 
     ChatClient chatClient;
@@ -82,10 +82,10 @@ public class ChatArea extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                Message message = new Message(userNickName, messageContent);
-                chatListModel.addElement(message);
-                msgTextField.setText("");
-                chatList.ensureIndexIsVisible(chatListModel.getSize()-1);
+//                Message message = new Message(userNickName, messageContent);
+//                chatListModel.addElement(message);
+//                msgTextField.setText("");
+//                chatList.ensureIndexIsVisible(chatListModel.getSize()-1);
             }
         });
 
@@ -145,17 +145,8 @@ public class ChatArea extends JFrame{
                 setForeground(list.getForeground());
             }
 
-            if (message.getSenderName().equals(ChatArea.this.userNickName)) {
-                senderLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-                messageLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-            } else {
-                if(Objects.equals(userNickName, "Server")){
-                    messageLabel.setHorizontalAlignment(SwingConstants.LEFT);
-                }else{
-                    senderLabel.setHorizontalAlignment(SwingConstants.LEFT);
-                    messageLabel.setHorizontalAlignment(SwingConstants.LEFT);
-                }
-            }
+            senderLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            messageLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
             return this;
         }
@@ -219,6 +210,8 @@ public class ChatArea extends JFrame{
         }
 
     }
+
+
 
     public static void main(String[] args) {
         new ChatArea("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");
