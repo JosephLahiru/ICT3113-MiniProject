@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Objects;
@@ -54,7 +56,6 @@ public class ChatArea extends JFrame{
 
     public ChatArea(String email, String nickname, String user_image) {
         super("ChatArea");
-
         this.userEmail = email;
         this.userNickName = nickname;
         this.userProPic = user_image;
@@ -73,7 +74,18 @@ public class ChatArea extends JFrame{
         scrollPane.setViewportView(chatList);
 
         chatList.setCellRenderer(new MessageCellRenderer());
-
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                try {
+                    sendMessage("Bye all, I am leaving");
+                    chatClient.serverIF.leaveChat(userNickName);
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +122,19 @@ public class ChatArea extends JFrame{
                     JOptionPane.showMessageDialog(null, "Please select a chat to join");
                 }
 
+            }
+        });
+        leaveChatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chatLable.setText("Chat");
+                chatListModel.clear();
+                try {
+                    sendMessage("Bye all, I am leaving");
+                    chatClient.serverIF.leaveChat(userNickName);
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }

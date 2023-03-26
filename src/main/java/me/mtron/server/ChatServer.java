@@ -44,11 +44,6 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
             ServerThread serverThread = new ServerThread(hostName, serviceName);
             serverThread.start();
         }
-//        ServerThread chatServer1 = new ServerThread("localhost", "1");
-//        ServerThread chatServer2 = new ServerThread("localhost", "2");
-//
-//        chatServer1.start();
-//        chatServer2.start();
 
     }
 
