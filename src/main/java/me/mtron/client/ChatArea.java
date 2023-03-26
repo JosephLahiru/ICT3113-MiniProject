@@ -28,6 +28,7 @@ public class ChatArea extends JFrame{
     private String userEmail;
     public String userNickName;
     private String userProPic;
+    private String chatid;
 
     ChatClient chatClient;
 
@@ -38,15 +39,15 @@ public class ChatArea extends JFrame{
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("select c.chatName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id and u.email = :email");
+        Query query = session.createQuery("select c.chat_id, c.chatName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id and u.email = :email");
         query.setParameter("email", userEmail);
-        List<String> chatNames = query.getResultList();
+        List<Object[]> chatinfo = query.getResultList();
 
         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Chat ID");
         model.addColumn("Chat Name");
-        for (String chatName : chatNames) {
-            Object[] row = {chatName};
-            model.addRow(row);
+        for (Object[] chat : chatinfo) {
+            model.addRow(new Object[]{chat[0], chat[1]});
         }
         myChattable.setModel(model);
     }
@@ -99,17 +100,18 @@ public class ChatArea extends JFrame{
         joinChatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    getConnected(userNickName);
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
+                if(myChattable.getSelectedRow() != -1){
+                    String chatName = myChattable.getValueAt(myChattable.getSelectedRow(), 1).toString();
+                    chatid = myChattable.getValueAt(myChattable.getSelectedRow(), 0).toString();
+                    chatLable.setText(chatName);
+                    try {
+                        getConnected(userNickName);
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Please select a chat to join");
                 }
-//                if(myChattable.getSelectedRow() != -1){
-//                    String chatName = myChattable.getValueAt(myChattable.getSelectedRow(), 0).toString();
-//                    chatLable.setText(chatName);
-//                }else{
-//                    JOptionPane.showMessageDialog(null, "Please select a chat to join");
-//                }
 
             }
         });
@@ -152,48 +154,6 @@ public class ChatArea extends JFrame{
         }
     }
 
-//    public void actionPerformed(ActionEvent e) {
-//        try {
-//            if (e.getSource() == this.startButton) {
-//                this.name = this.textField.getText();
-//                if (this.name.length() != 0) {
-//                    this.frame.setTitle(this.name + "'s console ");
-//                    this.textField.setText("");
-//                    this.textArea.append("username : " + this.name + " connecting to chat...\n");
-//                    this.getConnected(this.name);
-//                    if (!this.chatClient.connectionProblem) {
-//                        //this.startButton.setEnabled(false);
-//                        this.sendButton.setEnabled(true);
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(this.frame, "Enter your name to Start");
-//                }
-//            }
-//
-//            if (e.getSource() == this.sendButton) {
-//                this.message = this.textField.getText();
-//                this.textField.setText("");
-//                this.sendMessage(this.message);
-//                System.out.println("Sending message : " + this.message);
-//            }
-//
-//////            if (e.getSource() == this.privateMsgButton) {
-//////                int[] privateList = this.list.getSelectedIndices();
-//////
-//////                for(int i = 0; i < privateList.length; ++i) {
-//////                    System.out.println("selected index :" + privateList[i]);
-//////                }
-//////
-//////                this.message = this.textField.getText();
-//////                this.textField.setText("");
-//////                this.sendPrivate(privateList);
-////            }
-//        } catch (RemoteException var4) {
-//            var4.printStackTrace();
-//        }
-//
-//    }
-
     private void sendMessage(String chatMessage) throws RemoteException {
         this.chatClient.serverIF.updateChat(this.userNickName, chatMessage);
     }
@@ -203,7 +163,8 @@ public class ChatArea extends JFrame{
         cleanedUserName = userName.replaceAll("\\W+", "_");
 
         try {
-            this.chatClient = new ChatClient(this, cleanedUserName);
+            System.out.println(chatid);
+            this.chatClient = new ChatClient(this, cleanedUserName, this.chatid);
             this.chatClient.startClient();
         } catch (RemoteException var4) {
             var4.printStackTrace();
@@ -211,10 +172,8 @@ public class ChatArea extends JFrame{
 
     }
 
-
-
     public static void main(String[] args) {
-        new ChatArea("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");
+        new ChatArea("adam@gmail.com", "Adam", "src/main/resources/images/jane1.png");
     }
 
 }

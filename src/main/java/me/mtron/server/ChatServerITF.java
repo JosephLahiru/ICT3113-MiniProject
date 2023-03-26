@@ -13,5 +13,4 @@ public interface ChatServerITF extends Remote {
 
     void leaveChat(String var1) throws RemoteException;
 
-    void sendPM(int[] var1, String var2) throws RemoteException;
 }
