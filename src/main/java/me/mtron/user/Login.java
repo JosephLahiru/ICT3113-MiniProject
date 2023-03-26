@@ -61,6 +61,9 @@ public class Login extends JFrame{
 //                    System.out.println("Email: " + u.getEmail());
 //                    System.out.println("Password: " + u.getPassword());
                 }
+                JOptionPane.showMessageDialog(null, "Please check your credentials");
+                tfEmail.setText("");
+                pwdField.setText("");
 
                 session.getTransaction().commit();
                 session.close();
