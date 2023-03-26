@@ -52,6 +52,8 @@ public class UpdateData extends JFrame{
                 tfUserName.setText(u.getUserName());
                 tfNickName.setText(u.getNickname());
                 tfProPic.setText(u.getProfilePicture());
+                pwdField.setText(u.getPassword());
+                pwdComField.setText(u.getPassword());
 
                 session.getTransaction().commit();
                 session.close();
@@ -70,7 +72,7 @@ public class UpdateData extends JFrame{
                 query.setParameter("newNickName", tfNickName.getText());
                 query.setParameter("newProPic", tfProPic.getText());
 
-                if(Objects.equals(Arrays.toString(pwdField.getPassword()), Arrays.toString(pwdComField.getPassword()))){
+                if(pwdField.getPassword().length>0 && (Objects.equals(Arrays.toString(pwdField.getPassword()), Arrays.toString(pwdComField.getPassword())))){
                     query.setParameter("newPwd", Arrays.toString(pwdField.getPassword()));
                 }else{
                     JOptionPane.showMessageDialog(null, "Password and Password Confirmation does not match!!!");
