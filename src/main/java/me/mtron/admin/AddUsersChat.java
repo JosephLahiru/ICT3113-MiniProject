@@ -166,12 +166,17 @@ public class AddUsersChat extends JFrame {
                 if(UserList.isEmpty()) {
                     userExists = false;
                 }else {
-                    userExists = true;
                     int userID = UserList.get(0).getUser_id();
                     //check user already subscribed to chat
-                    Query query2 = session.createQuery("from SubscribeuserEntity where userId = :userId");
+                    Query query2 = session.createQuery("from SubscribeuserEntity where userId = :userId and chatId = :chatId");
                     query2.setParameter("userId", userID);
+                    query2.setParameter("chatId", chatID);
                     List<SubscribeuserEntity> SubscribeuserEntityList = query2.list();
+                    if(SubscribeuserEntityList.isEmpty()){
+                        userExists = false;
+                    }else{
+                        userExists = true;
+                    }
                 }
                 //check chat exists
                 Query query1 = session.createQuery("from ChatInfo where chat_id = :chat_id");
@@ -188,9 +193,10 @@ public class AddUsersChat extends JFrame {
                 }else if(userExists){
                     JOptionPane.showMessageDialog(null, "User already subscribed to chat");
                 }else{
+                    int userID = UserList.get(0).getUser_id();
                     SubscribeuserEntity subscribeuserEntity = new SubscribeuserEntity();
                     subscribeuserEntity.setChatId(Integer.parseInt(sSUChatIDtextField.getText()));
-                    subscribeuserEntity.setUserId(Integer.parseInt(sSUUserEmailtextField.getText()));
+                    subscribeuserEntity.setUserId(userID);
                     session.save(subscribeuserEntity);
                     session.getTransaction().commit();
                     SubscribeUserTable();
