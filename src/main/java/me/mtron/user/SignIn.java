@@ -56,7 +56,9 @@ public class SignIn extends JFrame{
                 password = String.valueOf(pwdField.getPassword());
                 passwordCom = String.valueOf(pwdComField.getPassword());
 
-                if(Objects.equals(password, passwordCom)) {
+                if(email.isEmpty() && uName.isEmpty() && nickName.isEmpty() && password.isEmpty() && passwordCom.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please fill all the fields");
+                }else if(Objects.equals(password, passwordCom)) {
                     User user = new User(email, uName, password, nickName);
 
                     Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
@@ -68,6 +70,8 @@ public class SignIn extends JFrame{
                     Login login = new Login(null);
                     login.setVisible(true);
                     setVisible(false);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Please Check Your Password!!!");
                 }
             }
         });
@@ -81,10 +85,5 @@ public class SignIn extends JFrame{
         });
 
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        System.out.println("SignIn");
-        new SignIn(null);
     }
 }

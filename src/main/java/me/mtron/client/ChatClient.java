@@ -13,7 +13,6 @@ import me.mtron.user.Message;
 public class ChatClient extends UnicastRemoteObject implements ChatClientITF {
     private static final long serialVersionUID = 7468891722773409712L;
     ChatArea chatGUI;
-    ChatArea chatArea;
     private String hostName = "localhost";
     private String serviceName ;
     private String clientServiceName;
@@ -62,7 +61,7 @@ public class ChatClient extends UnicastRemoteObject implements ChatClientITF {
     }
 
     public void messageFromServer(String message) throws RemoteException {
-        Message msg = new Message(message.split(":")[0], message.split(":")[1]);
+        Message msg = new Message(message.split(":")[0].replace(" ", ""), message.split(":")[1]);
         this.chatGUI.chatListModel.addElement(msg);
         this.chatGUI.msgTextField.setText("");
         this.chatGUI.chatList.ensureIndexIsVisible(this.chatGUI.chatListModel.getSize()-1);

@@ -5,26 +5,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Dashboard extends JFrame {
-    private JPanel Dashboard;
-    private JButton chatAreaButton;
-    private JButton userProfileBtn;
-    private JButton logoutButton;
-    private JLabel userImageLabel;
+public class Profile extends JFrame {
+    private JPanel Profile;
+    private JButton updateDetailsBtn;
     private JLabel userNicknameLabel;
     private JLabel userEmailLabel;
+    private JLabel userImageLabel;
     private String userEmail;
     private String userNickName;
     private String userProPic;
 
-    public Dashboard(String email, String nickname, String user_image) {
+
+    public Profile(String email, String nickname, String user_image) {
         super("Dashboard");
 
         this.userEmail = email;
         this.userNickName = nickname;
         this.userProPic = user_image;
 
-        this.setContentPane(Dashboard);
+        this.setContentPane(Profile);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setMinimumSize(new Dimension(1280, 720));
         this.setResizable(false);
@@ -40,26 +39,12 @@ public class Dashboard extends JFrame {
         this.userEmailLabel.setText(userEmail);
 
         this.setVisible(true);
-        chatAreaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new ChatArea(userEmail, userNickName, userProPic);
-                Dashboard.this.dispose();
-            }
-        });
 
-        logoutButton.addActionListener(new ActionListener() {
+        updateDetailsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Login(null);
-                Dashboard.this.dispose();
-            }
-        });
-        userProfileBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new Profile(userEmail, userNickName, userProPic);
-                Dashboard.this.dispose();
+                new UpdateData(userEmail);
+                Profile.this.dispose();
             }
         });
     }
