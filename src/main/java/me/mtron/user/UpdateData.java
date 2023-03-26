@@ -73,7 +73,7 @@ public class UpdateData extends JFrame{
                 query.setParameter("newProPic", tfProPic.getText());
 
                 if(pwdField.getPassword().length>0 && (Objects.equals(Arrays.toString(pwdField.getPassword()), Arrays.toString(pwdComField.getPassword())))){
-                    query.setParameter("newPwd", Arrays.toString(pwdField.getPassword()));
+                    query.setParameter("newPwd", new String(pwdField.getPassword()));
                 }else{
                     JOptionPane.showMessageDialog(null, "Password and Password Confirmation does not match!!!");
                     pwdField.setText("");

@@ -55,11 +55,12 @@ public class SignIn extends JFrame{
                 nickName = tfNickName.getText();
                 password = String.valueOf(pwdField.getPassword());
                 passwordCom = String.valueOf(pwdComField.getPassword());
+                proPic = tfProPic.getText();
 
                 if(email.isEmpty() && uName.isEmpty() && nickName.isEmpty() && password.isEmpty() && passwordCom.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
                 }else if(Objects.equals(password, passwordCom)) {
-                    User user = new User(email, uName, password, nickName);
+                    User user = new User(email, uName, password, nickName, proPic);
 
                     Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
                     session.beginTransaction();
