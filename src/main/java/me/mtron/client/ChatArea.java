@@ -210,8 +210,4 @@ public class ChatArea extends JFrame{
 
     }
 
-    public static void main(String[] args) {
-        new ChatArea("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");
-    }
-
 }
