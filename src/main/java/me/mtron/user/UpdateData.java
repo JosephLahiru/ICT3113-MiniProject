@@ -100,8 +100,4 @@ public class UpdateData extends JFrame{
         pwdField.setText("");
         pwdComField.setText("");
     }
-
-    public static void main(String[] args) {
-        new UpdateData("lisa@gmail.com");
-    }
 }
