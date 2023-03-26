@@ -88,8 +88,4 @@ public class UserChatUnsubscribe extends JFrame{
             }
         });
     }
-
-    public static void main(String[] args) {
-        new UserChatUnsubscribe("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");
-    }
 }
