@@ -135,7 +135,24 @@ public class ChatArea extends JFrame{
         @Override
         public Component getListCellRendererComponent(JList<? extends Message> list, Message message, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
-            senderLabel.setText(message.getSenderName());
+
+            ImageIcon icon;
+
+            if(Objects.equals(message.getSenderName(), "[Server]")){
+                icon = new ImageIcon("src/main/resources/images/server.png");
+            }else{
+                icon = new ImageIcon(userProPic);
+            }
+
+            Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+
+            senderLabel.setText(message.getSenderName()+ " [" + message.getTimestamp() + "]");
+            senderLabel.setIcon(scaledIcon);
+            senderLabel.setVerticalTextPosition(JLabel.BOTTOM);
+            senderLabel.setHorizontalTextPosition(JLabel.CENTER);
+
             messageLabel.setText(message.getMessageContent());
             if (isSelected) {
                 setBackground(list.getSelectionBackground());
@@ -145,7 +162,6 @@ public class ChatArea extends JFrame{
                 setForeground(list.getForeground());
             }
 
-            senderLabel.setHorizontalAlignment(SwingConstants.LEFT);
             messageLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
             return this;
@@ -210,8 +226,6 @@ public class ChatArea extends JFrame{
         }
 
     }
-
-
 
     public static void main(String[] args) {
         new ChatArea("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");

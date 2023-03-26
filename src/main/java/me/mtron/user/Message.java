@@ -1,16 +1,22 @@
 package me.mtron.user;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 public class Message {
     private String senderName;
     private String messageContent;
-    private LocalDateTime timestamp;
+    private String timestamp;
 
     public Message(String senderName, String messageContent) {
         this.senderName = senderName;
         this.messageContent = messageContent;
-        this.timestamp = LocalDateTime.now();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Date date = new Date(timestamp.getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        this.timestamp = sdf.format(date);
     }
 
     public String getSenderName() {
@@ -21,7 +27,7 @@ public class Message {
         return messageContent;
     }
 
-    public LocalDateTime getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 }
