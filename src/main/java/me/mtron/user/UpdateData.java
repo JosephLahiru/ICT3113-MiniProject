@@ -20,10 +20,15 @@ public class UpdateData extends JFrame{
     private JButton clearButton;
     private JButton submitButton;
     private JButton loadDataButton;
+    private JButton goBackBtn;
     private String email;
+    private String nickName;
+    private String proPic;
 
-    public UpdateData(String email) {
+    public UpdateData(String email, String userNickName, String userProPic) {
         this.email = email;
+        this.nickName = userNickName;
+        this.proPic = userProPic;
 
         this.setContentPane(panel1);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,6 +96,13 @@ public class UpdateData extends JFrame{
                 clearForm();
             }
         });
+        goBackBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Profile(email, nickName, proPic);
+                UpdateData.this.dispose();
+            }
+        });
     }
 
     private void clearForm(){
@@ -99,9 +111,5 @@ public class UpdateData extends JFrame{
         tfProPic.setText("");
         pwdField.setText("");
         pwdComField.setText("");
-    }
-
-    public static void main(String[] args) {
-        new UpdateData("lisa@gmail.com");
     }
 }

@@ -43,7 +43,7 @@ public class Profile extends JFrame {
         updateDetailsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new UpdateData(userEmail);
+                new UpdateData(userEmail, userNickName, userProPic);
                 Profile.this.dispose();
             }
         });
