@@ -6,6 +6,8 @@ import me.mtron.db.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -22,6 +24,7 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
     String line = "---------------------------------------------\n";
     private Vector<Chatter> chatters = new Vector(10, 1);
     private static final long serialVersionUID = 1L;
+    private static final String LOG_FILE = "chat_log.txt";
 
     public ChatServer() throws RemoteException {
     }
@@ -104,8 +107,14 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
 
             try {
                 c.getClient().messageFromServer(newMessage);
+
+                FileWriter writer = new FileWriter(LOG_FILE, true);
+                writer.write(newMessage + "\n");
+                writer.close();
             } catch (RemoteException var5) {
                 var5.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
 
