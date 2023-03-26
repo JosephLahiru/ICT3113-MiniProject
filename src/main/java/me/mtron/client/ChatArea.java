@@ -83,10 +83,6 @@ public class ChatArea extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-//                Message message = new Message(userNickName, messageContent);
-//                chatListModel.addElement(message);
-//                msgTextField.setText("");
-//                chatList.ensureIndexIsVisible(chatListModel.getSize()-1);
             }
         });
 
@@ -104,6 +100,7 @@ public class ChatArea extends JFrame{
                     String chatName = myChattable.getValueAt(myChattable.getSelectedRow(), 1).toString();
                     chatid = myChattable.getValueAt(myChattable.getSelectedRow(), 0).toString();
                     chatLable.setText(chatName);
+                    chatListModel.clear();
                     try {
                         getConnected(userNickName);
                     } catch (RemoteException ex) {
@@ -173,7 +170,7 @@ public class ChatArea extends JFrame{
     }
 
     public static void main(String[] args) {
-        new ChatArea("adam@gmail.com", "Adam", "src/main/resources/images/jane1.png");
+        new ChatArea("lisa@gmail.com", "Lisa", "src/main/resources/images/jane1.png");
     }
 
 }
