@@ -187,7 +187,9 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-65525"/>
               <font name="Book Antiqua" size="22" style="1"/>
+              <foreground color="-723969"/>
               <requestFocusEnabled value="false"/>
               <text value="Clear"/>
             </properties>
@@ -197,7 +199,9 @@
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-14418176"/>
               <font name="Book Antiqua" size="22" style="1"/>
+              <foreground color="-723969"/>
               <requestFocusEnabled value="false"/>
               <text value="Submit"/>
             </properties>
@@ -272,7 +276,7 @@
               <font name="JetBrains Mono" size="48" style="1"/>
               <foreground color="-8464918"/>
               <icon value="images/icons8_create_100px.png"/>
-              <text value="User SignIn"/>
+              <text value="User Registration"/>
             </properties>
           </component>
           <hspacer id="7e5bc">

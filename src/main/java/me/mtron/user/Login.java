@@ -22,6 +22,8 @@ public class Login extends JFrame{
     private String email;
     private String password;
 
+    boolean login = true;
+
     public Login(JFrame parent) {
         super("Login");
 
@@ -57,10 +59,15 @@ public class Login extends JFrame{
                         System.out.println("Welcome " + u.getNickname());
                         Login.this.dispose();
                         new Dashboard(u.getEmail(), u.getNickname(), u.getProfilePicture());
+                        login=false;
                     }
 //                    System.out.println("Email: " + u.getEmail());
 //                    System.out.println("Password: " + u.getPassword());
                 }
+                if(login)
+                    JOptionPane.showMessageDialog(null, "Please check your credentials");
+                tfEmail.setText("");
+                pwdField.setText("");
 
                 session.getTransaction().commit();
                 session.close();

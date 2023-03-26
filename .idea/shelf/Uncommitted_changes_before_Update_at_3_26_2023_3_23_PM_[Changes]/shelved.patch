@@ -1,0 +1,603 @@
+Index: src/main/java/me/mtron/user/ChatClientInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/me/mtron/user/ChatClientInterface.java b/src/main/java/me/mtron/user/ChatClientInterface.java
+new file mode 100644
+--- /dev/null	(date 1679734033675)
++++ b/src/main/java/me/mtron/user/ChatClientInterface.java	(date 1679734033675)
+@@ -0,0 +1,11 @@
++package me.mtron.user;
++
++import java.rmi.Remote;
++import java.rmi.RemoteException;
++import java.rmi.server.RemoteRef;
++
++public interface ChatClientInterface extends Remote {
++    public void messageFromServer(String message) throws RemoteException;
++
++    public void updateUserList(String[] currentUsers) throws RemoteException;
++}
+Index: src/main/java/me/mtron/user/ClientChat.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/me/mtron/user/ClientChat.java b/src/main/java/me/mtron/user/ClientChat.java
+new file mode 100644
+--- /dev/null	(date 1679735634699)
++++ b/src/main/java/me/mtron/user/ClientChat.java	(date 1679735634699)
+@@ -0,0 +1,83 @@
++package me.mtron.user;
++
++import java.rmi.RemoteException;
++import java.rmi.server.UnicastRemoteObject;
++import java.net.MalformedURLException;
++import java.rmi.ConnectException;
++import java.rmi.Naming;
++import java.rmi.NotBoundException;
++import javax.swing.JOptionPane;
++import me.mtron.server.ChatServerInterface;
++
++public class ClientChat extends UnicastRemoteObject implements ChatClientInterface {
++
++    private static final long serialVersionUID = 7468891722773409712L;
++    ClientRMIGUI chatGUI;
++    private String hostName = "localhost";
++    private String serviceName = "GroupChatService";
++    private String clientServiceName;
++    private String name;
++    protected ChatServerInterface serverIF;
++    protected boolean connectionProblem = false;
++
++    public ClientChat(ClientRMIGUI aChatGUI, String userName) throws RemoteException {
++        super();
++        this.chatGUI = aChatGUI;
++        this.name = userName;
++        this.clientServiceName = "ClientListenService_" + userName;
++    }
++
++    public void startClient() throws RemoteException {
++        String[] details = {name, hostName, clientServiceName};
++
++        try {
++            Naming.rebind("rmi://" + hostName + "/" + clientServiceName, this);
++            serverIF = ( ChatServerInterface )Naming.lookup("rmi://" + hostName + "/" + serviceName);
++        }
++        catch (ConnectException  e) {
++            JOptionPane.showMessageDialog(
++                    chatGUI.ClientRMIGUI, "The server seems to be unavailable\nPlease try later",
++                    "Connection problem", JOptionPane.ERROR_MESSAGE);
++            connectionProblem = true;
++            e.printStackTrace();
++        }
++        catch(NotBoundException | MalformedURLException me){
++            connectionProblem = true;
++            me.printStackTrace();
++        }
++        if(!connectionProblem){
++            registerWithServer(details);
++        }
++        System.out.println("Client Listen RMI Server is running...\n");
++    }
++
++    public void registerWithServer(String[] details) {
++        try{
++            serverIF.passIDentity(this.ref);//now redundant ??
++            serverIF.registerListener(details);
++        }
++        catch(Exception e){
++            e.printStackTrace();
++        }
++    }
++
++    @Override
++    public void messageFromServer(String message) throws RemoteException {
++        System.out.println( message );
++        chatGUI.textArea.append( message );
++        //make the gui display the last appended text, ie scroll to bottom
++        chatGUI.textArea.setCaretPosition(chatGUI.textArea.getDocument().getLength());
++    }
++
++    @Override
++    public void updateUserList(String[] currentUsers) throws RemoteException {
++
++        if(currentUsers.length < 2){
++            chatGUI.privateMsgButton.setEnabled(false);
++        }
++        chatGUI.userPanel.remove(chatGUI.clientPanel);
++        chatGUI.setClientPanel(currentUsers);
++        chatGUI.clientPanel.repaint();
++        chatGUI.clientPanel.revalidate();
++    }
++}
+Index: src/main/java/me/mtron/user/ClientRMIGUI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/me/mtron/user/ClientRMIGUI.java b/src/main/java/me/mtron/user/ClientRMIGUI.java
+new file mode 100644
+--- /dev/null	(date 1679751785702)
++++ b/src/main/java/me/mtron/user/ClientRMIGUI.java	(date 1679751785702)
+@@ -0,0 +1,257 @@
++package me.mtron.user;
++
++import java.awt.*;
++import java.awt.event.ActionEvent;
++import java.awt.event.ActionListener;
++import java.rmi.RemoteException;
++
++import javax.swing.BorderFactory;
++import javax.swing.DefaultListModel;
++import javax.swing.JButton;
++import javax.swing.JFrame;
++import javax.swing.JLabel;
++import javax.swing.JList;
++import javax.swing.JOptionPane;
++import javax.swing.JPanel;
++import javax.swing.JScrollPane;
++import javax.swing.JTextArea;
++import javax.swing.JTextField;
++import javax.swing.ListSelectionModel;
++import javax.swing.UIManager;
++import javax.swing.UIManager.LookAndFeelInfo;
++import javax.swing.border.Border;
++
++/**
++ *
++ * @author Daragh Walshe 	B00064428
++ * RMI Assignment 2		 	April 2015
++ *
++ */
++public class ClientRMIGUI extends JFrame implements ActionListener{
++
++    private static final long serialVersionUID = 1L;
++    public Component ClientRMIGUI;
++    private JPanel textPanel, inputPanel;
++    private JTextField textField;
++    private String name, message;
++    private Font meiryoFont = new Font("Meiryo", Font.PLAIN, 14);
++    private Border blankBorder = BorderFactory.createEmptyBorder(10,10,20,10);//top,r,b,l
++    private ClientChat chatClient;
++    private JList<String> list;
++    private DefaultListModel<String> listModel;
++
++    protected JTextArea textArea, userArea;
++    protected JFrame frame;
++    protected JButton privateMsgButton, startButton, sendButton;
++    protected JPanel clientPanel, userPanel;
++
++    /**
++     * Main method to start client GUI app.
++     * @param args
++     */
++    public static void main(String args[]){
++        //set the look and feel to 'Nimbus'
++        try{
++            for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
++                if("Nimbus".equals(info.getName())){
++                    UIManager.setLookAndFeel(info.getClassName());
++                    break;
++                }
++            }
++        }
++        catch(Exception e){
++        }
++        new ClientRMIGUI();
++    }//end main
++
++
++    /**
++     * GUI Constructor
++     */
++    public ClientRMIGUI(){
++
++        frame = new JFrame("Client Chat Console");
++
++        frame.addWindowListener(new java.awt.event.WindowAdapter() {
++            @Override
++            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
++
++                if(chatClient != null){
++                    try {
++                        sendMessage("Bye all, I am leaving");
++                        chatClient.serverIF.leaveChat(name);
++                    } catch (RemoteException e) {
++                        e.printStackTrace();
++                    }
++                }
++                System.exit(0);
++            }
++        });
++
++        Container c = getContentPane();
++        JPanel outerPanel = new JPanel(new BorderLayout());
++
++        outerPanel.add(getInputPanel(), BorderLayout.CENTER);
++        outerPanel.add(getTextPanel(), BorderLayout.NORTH);
++
++        c.setLayout(new BorderLayout());
++        c.add(outerPanel, BorderLayout.CENTER);
++        c.add(getUsersPanel(), BorderLayout.WEST);
++
++        frame.add(c);
++        frame.pack();
++        frame.setAlwaysOnTop(true);
++        frame.setLocation(150, 150);
++        textField.requestFocus();
++
++        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
++        frame.setVisible(true);
++    }
++
++
++    public JPanel getTextPanel(){
++        String welcome = "Welcome enter your name and press Start to begin\n";
++        textArea = new JTextArea(welcome, 14, 34);
++        textArea.setMargin(new Insets(10, 10, 10, 10));
++        textArea.setFont(meiryoFont);
++
++        textArea.setLineWrap(true);
++        textArea.setWrapStyleWord(true);
++        textArea.setEditable(false);
++        JScrollPane scrollPane = new JScrollPane(textArea);
++        textPanel = new JPanel();
++        textPanel.add(scrollPane);
++
++        textPanel.setFont(new Font("Meiryo", Font.PLAIN, 14));
++        return textPanel;
++    }
++
++
++    public JPanel getInputPanel(){
++        inputPanel = new JPanel(new GridLayout(1, 1, 5, 5));
++        inputPanel.setBorder(blankBorder);
++        textField = new JTextField();
++        textField.setFont(meiryoFont);
++        inputPanel.add(textField);
++        return inputPanel;
++    }
++
++
++    public JPanel getUsersPanel(){
++
++        userPanel = new JPanel(new BorderLayout());
++        String  userStr = " Current Users      ";
++
++        JLabel userLabel = new JLabel(userStr, JLabel.CENTER);
++        userPanel.add(userLabel, BorderLayout.NORTH);
++        userLabel.setFont(new Font("Meiryo", Font.PLAIN, 16));
++
++        String[] noClientsYet = {"No other users"};
++        setClientPanel(noClientsYet);
++
++        clientPanel.setFont(meiryoFont);
++        userPanel.add(makeButtonPanel(), BorderLayout.SOUTH);
++        userPanel.setBorder(blankBorder);
++
++        return userPanel;
++    }
++
++    public void setClientPanel(String[] currClients) {
++        clientPanel = new JPanel(new BorderLayout());
++        listModel = new DefaultListModel<String>();
++
++        for(String s : currClients){
++            listModel.addElement(s);
++        }
++        if(currClients.length > 1){
++            privateMsgButton.setEnabled(true);
++        }
++
++        //Create the list and put it in a scroll pane.
++        list = new JList<String>(listModel);
++        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
++        list.setVisibleRowCount(8);
++        list.setFont(meiryoFont);
++        JScrollPane listScrollPane = new JScrollPane(list);
++
++        clientPanel.add(listScrollPane, BorderLayout.CENTER);
++        userPanel.add(clientPanel, BorderLayout.CENTER);
++    }
++
++    public JPanel makeButtonPanel() {
++        sendButton = new JButton("Send ");
++        sendButton.addActionListener(this);
++        sendButton.setEnabled(false);
++
++        privateMsgButton = new JButton("Send PM");
++        privateMsgButton.addActionListener(this);
++        privateMsgButton.setEnabled(false);
++
++        startButton = new JButton("Start ");
++        startButton.addActionListener(this);
++
++        JPanel buttonPanel = new JPanel(new GridLayout(4, 1));
++        buttonPanel.add(privateMsgButton);
++        buttonPanel.add(new JLabel(""));
++        buttonPanel.add(startButton);
++        buttonPanel.add(sendButton);
++
++        return buttonPanel;
++    }
++
++    @Override
++    public void actionPerformed(ActionEvent e){
++
++        try {
++            //get connected to chat service
++            if(e.getSource() == startButton){
++                name = textField.getText();
++                if(name.length() != 0){
++                    frame.setTitle(name + "'s console ");
++                    textField.setText("");
++                    textArea.append("username : " + name + " connecting to chat...\n");
++                    getConnected(name);
++                    if(!chatClient.connectionProblem){
++                        startButton.setEnabled(false);
++                        sendButton.setEnabled(true);
++                    }
++                }
++                else{
++                    JOptionPane.showMessageDialog(frame, "Enter your name to Start");
++                }
++            }
++
++            //get text and clear textField
++            if(e.getSource() == sendButton){
++                message = textField.getText();
++                textField.setText("");
++                sendMessage(message);
++                System.out.println("Sending message : " + message);
++            }
++
++        }
++        catch (RemoteException remoteExc) {
++            remoteExc.printStackTrace();
++        }
++
++    }//end actionPerformed
++
++
++    private void sendMessage(String chatMessage) throws RemoteException {
++        chatClient.serverIF.updateChat(name, chatMessage);
++    }
++
++
++    private void getConnected(String userName) throws RemoteException{
++        //remove whitespace and non word characters to avoid malformed url
++        String cleanedUserName = userName.replaceAll("\\s+","_");
++        cleanedUserName = userName.replaceAll("\\W+","_");
++        try {
++            chatClient = new ClientChat(this, cleanedUserName);
++            chatClient.startClient();
++        } catch (RemoteException e) {
++            e.printStackTrace();
++        }
++    }
++
++}//end class
+Index: src/main/java/me/mtron/server/ChatServer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/me/mtron/server/ChatServer.java b/src/main/java/me/mtron/server/ChatServer.java
+new file mode 100644
+--- /dev/null	(date 1679741514911)
++++ b/src/main/java/me/mtron/server/ChatServer.java	(date 1679741514911)
+@@ -0,0 +1,154 @@
++package me.mtron.server;
++
++import me.mtron.user.ChatClientInterface;
++
++import java.rmi.Naming;
++import java.rmi.NotBoundException;
++import java.rmi.RemoteException;
++import java.rmi.server.RMIClientSocketFactory;
++import java.rmi.server.RMIServerSocketFactory;
++import java.rmi.server.RemoteRef;
++import java.rmi.server.UnicastRemoteObject;
++import java.net.MalformedURLException;
++import java.util.Date;
++import java.util.Vector;
++import me.mtron.user.ChatClientInterface;
++
++public class ChatServer extends UnicastRemoteObject implements ChatServerInterface{
++    String line = "---------------------------------------------\n";
++    private Vector<Chatter> chatters;
++    private static final long serialVersionUID = 1L;
++
++    //Constructor
++    public ChatServer() throws RemoteException {
++        super();
++        chatters = new Vector<Chatter>(10, 1);
++    }
++
++    public static void main(String[] args) {
++        startRMIRegistry();
++        String hostName = "localhost";
++        String serviceName = "GroupChatService";
++
++        if(args.length == 2){
++            hostName = args[0];
++            serviceName = args[1];
++        }
++
++        try{
++            ChatServerInterface hello = new ChatServer();
++            Naming.rebind("rmi://" + hostName + "/" + serviceName, hello);
++            System.out.println("Group Chat RMI Server is running...");
++        }
++        catch(Exception e){
++            System.out.println("Server had problems starting");
++        }
++    }
++
++
++    public static void startRMIRegistry() {
++        try{
++            java.rmi.registry.LocateRegistry.createRegistry(1099);
++            System.out.println("RMI Server ready");
++        }
++        catch(RemoteException e) {
++            e.printStackTrace();
++        }
++    }
++
++    public String sayHello(String ClientName) throws RemoteException {
++        System.out.println(ClientName + " sent a message");
++        return "Hello " + ClientName + " from group chat server";
++    }
++
++    public void updateChat(String name, String nextPost) throws RemoteException{
++        String message =  name + " : " + nextPost + "\n";
++        sendToAll(message);
++    }
++
++    @Override
++    public void passIDentity(RemoteRef ref) throws RemoteException {
++        //System.out.println("\n" + ref.remoteToString() + "\n");
++        try{
++            System.out.println(line + ref.toString());
++        }catch(Exception e){
++            e.printStackTrace();
++        }
++    }//end passIDentity
++
++    @Override
++    public void registerListener(String[] details) throws RemoteException {
++        System.out.println(new Date(System.currentTimeMillis()));
++        System.out.println(details[0] + " has joined the chat session");
++        System.out.println(details[0] + "'s hostname : " + details[1]);
++        System.out.println(details[0] + "'sRMI service : " + details[2]);
++        registerChatter(details);
++    }
++
++
++    private void registerChatter(String[] details){
++        try{
++            ChatClientInterface nextClient = ( ChatClientInterface )Naming.lookup("rmi://" + details[1] + "/" + details[2]);
++
++            chatters.addElement(new Chatter(details[0], nextClient));
++
++            nextClient.messageFromServer("[Server] : Hello " + details[0] + " you are now free to chat.\n");
++
++            sendToAll("[Server] : " + details[0] + " has joined the group.\n");
++
++            updateUserList();
++        }
++        catch(RemoteException | MalformedURLException | NotBoundException e){
++            e.printStackTrace();
++        }
++    }
++
++    private void updateUserList() {
++        String[] currentUsers = getUserList();
++        for(Chatter c : chatters){
++            try {
++                c.getClient().updateUserList(currentUsers);
++            }
++            catch (RemoteException e) {
++                e.printStackTrace();
++            }
++        }
++    }
++
++
++    private String[] getUserList(){
++        // generate an array of current users
++        String[] allUsers = new String[chatters.size()];
++        for(int i = 0; i< allUsers.length; i++){
++            allUsers[i] = chatters.elementAt(i).getName();
++        }
++        return allUsers;
++    }
++
++    public void sendToAll(String newMessage){
++        for(Chatter c : chatters){
++            try {
++                c.getClient().messageFromServer(newMessage);
++            }
++            catch (RemoteException e) {
++                e.printStackTrace();
++            }
++        }
++    }
++
++    @Override
++    public void leaveChat(String userName) throws RemoteException{
++
++        for(Chatter c : chatters){
++            if(c.getName().equals(userName)){
++                System.out.println(line + userName + " left the chat session");
++                System.out.println(new Date(System.currentTimeMillis()));
++                chatters.remove(c);
++                break;
++            }
++        }
++        if(!chatters.isEmpty()){
++            updateUserList();
++        }
++    }
++}
+Index: src/main/java/me/mtron/server/Chatter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/me/mtron/server/Chatter.java b/src/main/java/me/mtron/server/Chatter.java
+new file mode 100644
+--- /dev/null	(date 1679736546371)
++++ b/src/main/java/me/mtron/server/Chatter.java	(date 1679736546371)
+@@ -0,0 +1,22 @@
++package me.mtron.server;
++
++import me.mtron.user.ChatClientInterface;
++public class Chatter {
++    public String name;
++    public ChatClientInterface client;
++
++    //constructor
++    public Chatter(String name, ChatClientInterface client){
++        this.name = name;
++        this.client = client;
++    }
++
++
++    //getters and setters
++    public String getName(){
++        return name;
++    }
++    public ChatClientInterface getClient(){
++        return client;
++    }
++}
+Index: src/main/java/me/mtron/server/ChatServerInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/me/mtron/server/ChatServerInterface.java b/src/main/java/me/mtron/server/ChatServerInterface.java
+new file mode 100644
+--- /dev/null	(date 1679742250347)
++++ b/src/main/java/me/mtron/server/ChatServerInterface.java	(date 1679742250347)
+@@ -0,0 +1,16 @@
++package me.mtron.server;
++
++import java.rmi.Remote;
++import java.rmi.RemoteException;
++import java.rmi.server.RemoteRef;
++
++public interface ChatServerInterface extends Remote {
++    public void updateChat(String userName, String chatMessage)throws RemoteException;
++
++    public void passIDentity(RemoteRef ref)throws RemoteException;
++
++    public void registerListener(String[] details)throws RemoteException;
++
++    public void leaveChat(String userName)throws RemoteException;
++
++}

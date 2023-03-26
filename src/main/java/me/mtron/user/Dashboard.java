@@ -1,5 +1,7 @@
 package me.mtron.user;
 
+import me.mtron.client.ChatArea;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,11 +10,13 @@ import java.awt.event.ActionListener;
 public class Dashboard extends JFrame {
     private JPanel Dashboard;
     private JButton chatAreaButton;
-    private JButton searchChatsButton;
+    private JButton userProfileBtn;
     private JButton logoutButton;
     private JLabel userImageLabel;
     private JLabel userNicknameLabel;
     private JLabel userEmailLabel;
+    private JButton subscribeToChatsButton;
+    private JButton unsubsribeFromChatsButton;
     private String userEmail;
     private String userNickName;
     private String userProPic;
@@ -52,6 +56,27 @@ public class Dashboard extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Login(null);
+                Dashboard.this.dispose();
+            }
+        });
+        userProfileBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Profile(userEmail, userNickName, userProPic);
+                Dashboard.this.dispose();
+            }
+        });
+        subscribeToChatsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new UserChatSubscribe(userEmail, userNickName, userProPic);
+                Dashboard.this.dispose();
+            }
+        });
+        unsubsribeFromChatsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new UserChatUnsubscribe(userEmail, userNickName, userProPic);
                 Dashboard.this.dispose();
             }
         });
