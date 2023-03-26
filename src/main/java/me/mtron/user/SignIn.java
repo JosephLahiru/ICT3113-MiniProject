@@ -86,9 +86,4 @@ public class SignIn extends JFrame{
 
         setVisible(true);
     }
-
-    public static void main(String[] args) {
-        System.out.println("SignIn");
-        new SignIn(null);
-    }
 }

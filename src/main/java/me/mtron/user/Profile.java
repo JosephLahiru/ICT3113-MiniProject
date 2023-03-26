@@ -39,13 +39,6 @@ public class Profile extends JFrame {
         this.userEmailLabel.setText(userEmail);
 
         this.setVisible(true);
-        updateDetailsBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new ChatArea(userEmail, userNickName, userProPic);
-                Profile.this.dispose();
-            }
-        });
 
         updateDetailsBtn.addActionListener(new ActionListener() {
             @Override
