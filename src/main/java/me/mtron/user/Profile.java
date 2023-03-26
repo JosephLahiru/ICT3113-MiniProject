@@ -11,6 +11,7 @@ public class Profile extends JFrame {
     private JLabel userNicknameLabel;
     private JLabel userEmailLabel;
     private JLabel userImageLabel;
+    private JButton cHomeButton;
     private String userEmail;
     private String userNickName;
     private String userProPic;
@@ -43,8 +44,15 @@ public class Profile extends JFrame {
         updateDetailsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new UpdateData(userEmail);
+                new UpdateData(userEmail, userNickName, userProPic);
                 Profile.this.dispose();
+            }
+        });
+        cHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Profile.this.dispose();
+                new Dashboard(userEmail, userNickName, userProPic);
             }
         });
     }
