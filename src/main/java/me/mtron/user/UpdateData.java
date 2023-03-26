@@ -20,10 +20,15 @@ public class UpdateData extends JFrame{
     private JButton clearButton;
     private JButton submitButton;
     private JButton loadDataButton;
+    private JButton goBackBtn;
     private String email;
+    private String nickName;
+    private String proPic;
 
-    public UpdateData(String email) {
+    public UpdateData(String email, String userNickName, String userProPic) {
         this.email = email;
+        this.nickName = userNickName;
+        this.proPic = userProPic;
 
         this.setContentPane(panel1);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,6 +52,8 @@ public class UpdateData extends JFrame{
                 tfUserName.setText(u.getUserName());
                 tfNickName.setText(u.getNickname());
                 tfProPic.setText(u.getProfilePicture());
+                pwdField.setText(u.getPassword());
+                pwdComField.setText(u.getPassword());
 
                 session.getTransaction().commit();
                 session.close();
@@ -65,7 +72,7 @@ public class UpdateData extends JFrame{
                 query.setParameter("newNickName", tfNickName.getText());
                 query.setParameter("newProPic", tfProPic.getText());
 
-                if(Objects.equals(Arrays.toString(pwdField.getPassword()), Arrays.toString(pwdComField.getPassword()))){
+                if(pwdField.getPassword().length>0 && (Objects.equals(Arrays.toString(pwdField.getPassword()), Arrays.toString(pwdComField.getPassword())))){
                     query.setParameter("newPwd", Arrays.toString(pwdField.getPassword()));
                 }else{
                     JOptionPane.showMessageDialog(null, "Password and Password Confirmation does not match!!!");
@@ -89,6 +96,13 @@ public class UpdateData extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 clearForm();
+            }
+        });
+        goBackBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Profile(email, nickName, proPic);
+                UpdateData.this.dispose();
             }
         });
     }
