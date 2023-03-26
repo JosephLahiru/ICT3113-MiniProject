@@ -8,6 +8,8 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/artifacts/
+.idea/caches/
 .idea/workspace.xml
 .idea/dataSources.local.xml
 *.iws
