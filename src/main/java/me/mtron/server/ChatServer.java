@@ -1,6 +1,11 @@
 package me.mtron.server;
 
+import me.mtron.admin.ChatInfo;
 import me.mtron.client.ChatClientITF;
+import me.mtron.db.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -10,6 +15,7 @@ import java.rmi.server.RemoteRef;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
@@ -23,18 +29,20 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
     public static void main(String[] args) {
         startRMIRegistry();
         String hostName = "localhost";
-        String serviceName = "GroupChatService";
+        String serviceName;
         if (args.length == 2) {
             hostName = args[0];
             serviceName = args[1];
         }
-
-        try {
-            ChatServerITF hello = new ChatServer();
-            Naming.rebind("rmi://" + hostName + "/" + serviceName, hello);
-            System.out.println("Group Chat RMI Server is running...");
-        } catch (Exception var4) {
-            System.out.println("Server had problems starting");
+        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from ChatInfo");
+        List<ChatInfo> ChatInfoList = query.list();
+        session.close();
+        for (ChatInfo chatInfo : ChatInfoList) {
+            serviceName = String.valueOf(chatInfo.getChat_id());
+            ServerThread serverThread = new ServerThread(hostName, serviceName);
+            serverThread.start();
         }
 
     }
@@ -82,37 +90,10 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
             this.chatters.addElement(new Chatter(details[0], nextClient));
             nextClient.messageFromServer("[Server] : Hello " + details[0] + " you are now free to chat.\n");
             this.sendToAll("[Server] : " + details[0] + " has joined the group.\n");
-            this.updateUserList();
         } catch (MalformedURLException | NotBoundException | RemoteException var3) {
             var3.printStackTrace();
         }
 
-    }
-
-    private void updateUserList() {
-        String[] currentUsers = this.getUserList();
-        Iterator var3 = this.chatters.iterator();
-
-        while(var3.hasNext()) {
-            Chatter c = (Chatter)var3.next();
-
-            try {
-                c.getClient().updateUserList(currentUsers);
-            } catch (RemoteException var5) {
-                var5.printStackTrace();
-            }
-        }
-
-    }
-
-    private String[] getUserList() {
-        String[] allUsers = new String[this.chatters.size()];
-
-        for(int i = 0; i < allUsers.length; ++i) {
-            allUsers[i] = ((Chatter)this.chatters.elementAt(i)).getName();
-        }
-
-        return allUsers;
     }
 
     public void sendToAll(String newMessage) {
@@ -143,21 +124,6 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerITF {
             }
         }
 
-//        if (!this.chatters.isEmpty()) {
-//            this.updateUserList();
-//        }
-
     }
 
-    public void sendPM(int[] privateGroup, String privateMessage) throws RemoteException {
-        int[] var7 = privateGroup;
-        int var6 = privateGroup.length;
-
-        for(int var5 = 0; var5 < var6; ++var5) {
-            int i = var7[var5];
-            Chatter pc = (Chatter)this.chatters.elementAt(i);
-            pc.getClient().messageFromServer(privateMessage);
-        }
-
-    }
 }

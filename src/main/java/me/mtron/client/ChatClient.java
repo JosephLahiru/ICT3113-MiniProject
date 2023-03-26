@@ -14,16 +14,18 @@ public class ChatClient extends UnicastRemoteObject implements ChatClientITF {
     private static final long serialVersionUID = 7468891722773409712L;
     ChatArea chatGUI;
     private String hostName = "localhost";
-    private String serviceName = "GroupChatService";
+    private String serviceName ;
     private String clientServiceName;
     private String name;
     protected ChatServerITF serverIF;
     protected boolean connectionProblem = false;
 
-    public ChatClient(ChatArea aChatGUI, String userName) throws RemoteException {
+
+    public ChatClient(ChatArea aChatGUI, String userName, String serviceName) throws RemoteException {
         this.chatGUI = aChatGUI;
         this.name = userName;
         this.clientServiceName = "ClientListenService_" + userName;
+        this.serviceName = serviceName;
     }
 
     public void startClient() throws RemoteException {
@@ -65,19 +67,4 @@ public class ChatClient extends UnicastRemoteObject implements ChatClientITF {
         this.chatGUI.chatList.ensureIndexIsVisible(this.chatGUI.chatListModel.getSize()-1);
     }
 
-    @Override
-    public void updateUserList(String[] var1) throws RemoteException {
-
-    }
-
-//    public void updateUserList(String[] currentUsers) throws RemoteException {
-//        if (currentUsers.length < 2) {
-//            this.chatGUI.privateMsgButton.setEnabled(false);
-//        }
-//
-//        this.chatGUI.userPanel.remove(this.chatGUI.clientPanel);
-//        this.chatGUI.setClientPanel(currentUsers);
-//        this.chatGUI.clientPanel.repaint();
-//        this.chatGUI.clientPanel.revalidate();
-//    }
 }

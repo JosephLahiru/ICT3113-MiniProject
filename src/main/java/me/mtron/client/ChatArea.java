@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +30,7 @@ public class ChatArea extends JFrame{
     private String userEmail;
     public String userNickName;
     private String userProPic;
+    private String chatid;
 
     ChatClient chatClient;
 
@@ -38,22 +41,21 @@ public class ChatArea extends JFrame{
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("select c.chatName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id and u.email = :email");
+        Query query = session.createQuery("select c.chat_id, c.chatName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id and u.email = :email");
         query.setParameter("email", userEmail);
-        List<String> chatNames = query.getResultList();
+        List<Object[]> chatinfo = query.getResultList();
 
         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Chat ID");
         model.addColumn("Chat Name");
-        for (String chatName : chatNames) {
-            Object[] row = {chatName};
-            model.addRow(row);
+        for (Object[] chat : chatinfo) {
+            model.addRow(new Object[]{chat[0], chat[1]});
         }
         myChattable.setModel(model);
     }
 
     public ChatArea(String email, String nickname, String user_image) {
         super("ChatArea");
-
         this.userEmail = email;
         this.userNickName = nickname;
         this.userProPic = user_image;
@@ -72,7 +74,18 @@ public class ChatArea extends JFrame{
         scrollPane.setViewportView(chatList);
 
         chatList.setCellRenderer(new MessageCellRenderer());
-
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                try {
+                    sendMessage("Bye all, I am leaving");
+                    chatClient.serverIF.leaveChat(userNickName);
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,10 +95,6 @@ public class ChatArea extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-//                Message message = new Message(userNickName, messageContent);
-//                chatListModel.addElement(message);
-//                msgTextField.setText("");
-//                chatList.ensureIndexIsVisible(chatListModel.getSize()-1);
             }
         });
 
@@ -99,18 +108,33 @@ public class ChatArea extends JFrame{
         joinChatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(myChattable.getSelectedRow() != -1){
+                    String chatName = myChattable.getValueAt(myChattable.getSelectedRow(), 1).toString();
+                    chatid = myChattable.getValueAt(myChattable.getSelectedRow(), 0).toString();
+                    chatLable.setText(chatName);
+                    chatListModel.clear();
+                    try {
+                        getConnected(userNickName);
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Please select a chat to join");
+                }
+
+            }
+        });
+        leaveChatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chatLable.setText("Chat");
+                chatListModel.clear();
                 try {
-                    getConnected(userNickName);
+                    sendMessage("Bye all, I am leaving");
+                    chatClient.serverIF.leaveChat(userNickName);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-//                if(myChattable.getSelectedRow() != -1){
-//                    String chatName = myChattable.getValueAt(myChattable.getSelectedRow(), 0).toString();
-//                    chatLable.setText(chatName);
-//                }else{
-//                    JOptionPane.showMessageDialog(null, "Please select a chat to join");
-//                }
-
             }
         });
     }
@@ -168,48 +192,6 @@ public class ChatArea extends JFrame{
         }
     }
 
-//    public void actionPerformed(ActionEvent e) {
-//        try {
-//            if (e.getSource() == this.startButton) {
-//                this.name = this.textField.getText();
-//                if (this.name.length() != 0) {
-//                    this.frame.setTitle(this.name + "'s console ");
-//                    this.textField.setText("");
-//                    this.textArea.append("username : " + this.name + " connecting to chat...\n");
-//                    this.getConnected(this.name);
-//                    if (!this.chatClient.connectionProblem) {
-//                        //this.startButton.setEnabled(false);
-//                        this.sendButton.setEnabled(true);
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(this.frame, "Enter your name to Start");
-//                }
-//            }
-//
-//            if (e.getSource() == this.sendButton) {
-//                this.message = this.textField.getText();
-//                this.textField.setText("");
-//                this.sendMessage(this.message);
-//                System.out.println("Sending message : " + this.message);
-//            }
-//
-//////            if (e.getSource() == this.privateMsgButton) {
-//////                int[] privateList = this.list.getSelectedIndices();
-//////
-//////                for(int i = 0; i < privateList.length; ++i) {
-//////                    System.out.println("selected index :" + privateList[i]);
-//////                }
-//////
-//////                this.message = this.textField.getText();
-//////                this.textField.setText("");
-//////                this.sendPrivate(privateList);
-////            }
-//        } catch (RemoteException var4) {
-//            var4.printStackTrace();
-//        }
-//
-//    }
-
     private void sendMessage(String chatMessage) throws RemoteException {
         this.chatClient.serverIF.updateChat(this.userNickName, chatMessage);
     }
@@ -219,7 +201,8 @@ public class ChatArea extends JFrame{
         cleanedUserName = userName.replaceAll("\\W+", "_");
 
         try {
-            this.chatClient = new ChatClient(this, cleanedUserName);
+            System.out.println(chatid);
+            this.chatClient = new ChatClient(this, cleanedUserName, this.chatid);
             this.chatClient.startClient();
         } catch (RemoteException var4) {
             var4.printStackTrace();

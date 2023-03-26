@@ -1,4 +1,10 @@
-package me.mtron.admin;
+package me.mtron.user;
+
+import me.mtron.admin.ChatInfo;
+import me.mtron.admin.SubscribeuserEntity;
+import me.mtron.db.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -6,76 +12,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import me.mtron.db.HibernateUtil;
-import me.mtron.user.User;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
-
-public class AddUsersChat extends JFrame {
-    private JPanel subscribeUserPanel;
-    private JButton sHomeButton;
-    private JTextField sSUNTextField;
-    private JButton sSUSearchButton;
+public class UserChatSubscribe extends JFrame {
+    private JLabel tableHeadingJLable;
+    private JTable sUserTable;
+    private JTextField sSCNTextField;
     private JButton sSCResetButton;
     private JButton sSCSearchButton;
-    private JTextField sSCNTextField;
-    private JTextField sSUUserEmailtextField;
     private JTextField sSUChatIDtextField;
     private JButton resetButton;
     private JButton subscribeButton;
-    private JButton sSUResetButton;
-    private JTable sUserTable;
-    private JLabel tableHeadingJLable;
+    private JButton sHomeButton;
+    private JPanel subscribeUserPanel;
+    private String userEmail;
+    private String userNickName;
+    private String userProPic;
 
     private void SubscribeUserTable(){
         Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("select s.chatId, c.chatName, s.userId, u.userName, u.email from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id");
+        Query query = session.createQuery("select s.chatId, c.chatName from SubscribeuserEntity s, ChatInfo c, User u where s.chatId = c.chat_id and s.userId = u.user_id and u.email = :email");
+        query.setParameter("email", userEmail);
         List<Object[]> rows = query.list();
         session.close();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Chat ID");
         model.addColumn("Chat Name");
-        model.addColumn("User ID");
-        model.addColumn("User Name");
-        model.addColumn("User Email");
         for (Object[] row : rows) {
             model.addRow(row);
         }
-        tableHeadingJLable.setText("Subscribed Users");
-        sUserTable.setModel(model);
-    }
-
-    private void SearchUserTable(String email){
-        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
-        session.beginTransaction();
-        Query query = session.createQuery("from User where email = :email");
-        query.setParameter("email", email);
-        List<User> UserList = query.list();
-        Query query1 = session.createQuery("from User");
-        List<User> UserListAll = query1.list();
-        session.close();
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("User ID");
-        model.addColumn("User Email");
-        model.addColumn("User Name");
-        model.addColumn("User Nickname");
-        if(UserList.isEmpty()){
-            JOptionPane.showMessageDialog(null, "User Not Found, Loading All Users");
-            for (User userInfo : UserListAll) {
-                model.addRow(new Object[]{userInfo.getUser_id(), userInfo.getEmail(), userInfo.getUserName(), userInfo.getNickname()});
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "User Found");
-            for (User userInfo : UserList) {
-                model.addRow(new Object[]{userInfo.getUser_id(), userInfo.getEmail(), userInfo.getUserName(), userInfo.getNickname()});
-            }
-            sSUUserEmailtextField.setText(email);
-        }
-        tableHeadingJLable.setText("Users Table");
+        tableHeadingJLable.setText("Subscribed Chats");
         sUserTable.setModel(model);
     }
 
@@ -108,33 +75,24 @@ public class AddUsersChat extends JFrame {
         tableHeadingJLable.setText("Chats Table");
         sUserTable.setModel(model);
     }
-
-    public AddUsersChat() {
-        super("Add Users to Chat");
+    public UserChatSubscribe(String email, String nickname, String user_image) {
+        super("Subscribe to Chat");
         this.setContentPane(subscribeUserPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.userEmail = email;
+        this.userNickName = nickname;
+        this.userProPic = user_image;
 
         SubscribeUserTable();
-        sHomeButton.addActionListener(new ActionListener() {
+        sSCResetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddUsersChat.this.dispose();
-                new Dashboard();
-            }
-        });
-        sSUSearchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String email = sSUNTextField.getText();
-                if(sSUNTextField.getText().isEmpty())
-                    JOptionPane.showMessageDialog(null, "Please fill the field");
-                else {
-                    SearchUserTable(email);
-                }
+                sSCNTextField.setText("");
+                SubscribeUserTable();
             }
         });
         sSCSearchButton.addActionListener(new ActionListener() {
@@ -148,11 +106,17 @@ public class AddUsersChat extends JFrame {
                 }
             }
         });
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sSUChatIDtextField.setText("");
+                SubscribeUserTable();
+            }
+        });
         subscribeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int chatID = Integer.parseInt(sSUChatIDtextField.getText());
-                String userEmail = sSUUserEmailtextField.getText();
                 boolean userExists = false;
 
                 Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
@@ -184,10 +148,8 @@ public class AddUsersChat extends JFrame {
                 List<ChatInfo> ChatInfoList = query1.list();
 
 
-                if(sSUChatIDtextField.getText().isEmpty() || sSUUserEmailtextField.getText().isEmpty()) {
+                if(sSUChatIDtextField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
-                }else if(UserList.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "User not found");
                 }else if(ChatInfoList.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Chat not found");
                 }else if(userExists){
@@ -201,32 +163,16 @@ public class AddUsersChat extends JFrame {
                     session.getTransaction().commit();
                     SubscribeUserTable();
                     sSUChatIDtextField.setText("");
-                    sSUUserEmailtextField.setText("");
                     JOptionPane.showMessageDialog(null, "User subscribed to chat");
                 }
                 session.close();
             }
         });
-        sSUResetButton.addActionListener(new ActionListener() {
+        sHomeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sSUNTextField.setText("");
-                SubscribeUserTable();
-            }
-        });
-        sSCResetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sSCNTextField.setText("");
-                SubscribeUserTable();
-            }
-        });
-        resetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sSUChatIDtextField.setText("");
-                sSUUserEmailtextField.setText("");
-                SubscribeUserTable();
+                UserChatSubscribe.this.dispose();
+                new Dashboard(userEmail, userNickName, userProPic);
             }
         });
     }
